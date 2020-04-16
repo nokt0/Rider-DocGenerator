@@ -1,4 +1,4 @@
-class TagsStruct {
+public class TagsStruct {
     var c;
     var code;
     var exmaple;
@@ -17,4 +17,6 @@ class TagsStruct {
     var typeparamref;
     var returns;
     var value;
+
+
 }
