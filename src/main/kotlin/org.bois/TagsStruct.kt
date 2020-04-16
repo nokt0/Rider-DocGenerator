@@ -21,8 +21,25 @@ public class TagsStruct {
     var value: String? = null
 
     override fun toString(): String {
-        return "<c>\t$c\n" +
-                "<code>\t$code\n" +
-                "<example>\t$example\n"
+        return "<c>\t[$c]\n" +
+                "<code>\t[$code]\n" +
+                "<example>\t[$example]\n" +
+                "<exception>\t[$exception]\n" +
+                "<include>\t[$include]\n" +
+                "<list>\t[$list]\n" +
+                "<para>\t[$para]\n" +
+                "<param>\t[$param]\n" +
+                "<paramref>\t[$paramref]\n" +
+                "<permission>\t[$permission]\n" +
+                "<inheritdoc>\t[$inheritdoc]\n" +
+                "<see>\t[$see]\n" +
+                "<seealso>\t[$seealso]\n" +
+                "<summary>\t[$summary]\n" +
+                "<typeparam>\t[$typeparam]\n" +
+                "<typeparamref>\t[$typeparamref]\n" +
+                "<returns>\t[$returns]\n" +
+                "<value>\t[$value]"
+
+
     }
 }
