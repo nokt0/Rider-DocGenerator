@@ -1,6 +1,6 @@
-package org.bois
+package org.bois.parser
 
-public class TagsTextConstants{
+data class TagsTextConstants {
     val c = "<c>"
     val code = "<code>"
     val example = "<example>"
@@ -19,4 +19,25 @@ public class TagsTextConstants{
     val typeparamref = "<typeparamref>"
     val returns = "<returns>"
     val value = "<value>"
+
+    val tags = arrayListOf<String>(
+        c,
+        code,
+        example,
+        exception,
+        include,
+        list,
+        para,
+        param,
+        paramref,
+        permission,
+        inheritdoc,
+        see,
+        seealso,
+        summary,
+        typeparam,
+        typeparamref,
+        returns,
+        value
+    )
 }

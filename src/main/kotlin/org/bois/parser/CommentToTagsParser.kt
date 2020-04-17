@@ -1,10 +1,10 @@
-package org.bois
-
+package org.bois.parser
+import java.lang.StringBuffer;
 
 class CommentToTagsParser {
     val tags = TagsStruct()
 
-    fun parse(comment: java.lang.StringBuffer) {
+    fun parse(comment: StringBuffer) {
         if (comment.indexOf("<c>") != -1 && comment.lastIndexOf("<c>") != -1)
             tags.c = comment.substring(comment.indexOf("<c>") + "<c>".length, comment.lastIndexOf("<c>"))
         if (comment.indexOf("<code>") != -1 && comment.lastIndexOf("<code>") != -1)

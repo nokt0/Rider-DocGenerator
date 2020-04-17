@@ -1,4 +1,4 @@
-package org.bois
+package org.bois.parser
 
 public class TagsStruct {
     var c: String? = null
