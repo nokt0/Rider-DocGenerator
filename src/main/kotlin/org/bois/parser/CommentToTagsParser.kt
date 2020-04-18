@@ -1,8 +1,35 @@
 package org.bois.parser
+import java.io.BufferedReader
+import java.io.LineNumberReader
 import java.lang.StringBuffer;
 
-class CommentToTagsParser {
+class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
+    var reader : LineNumberReader = LineNumberReader(inputReader)
+
+    fun createBlocks(): ArrayList<StringBuffer> {
+        var startDocComment: Int = -1
+        val commentBlocks : ArrayList<StringBuffer> = ArrayList()
+        var block : StringBuffer = StringBuffer()
+
+        do {
+            val line = reader.readLine()
+            if(line != null && line.indexOf("///") != -1){
+                if(startDocComment != -1) {
+                    startDocComment = reader.lineNumber
+                }
+                block.append(line)
+            }else{
+                block.append(line)
+                commentBlocks.add(block)
+                block = StringBuffer()
+                startDocComment = -1
+            }
+
+        }while (line != null)
+
+        return commentBlocks
+    }
 
     fun parse(comment: StringBuffer) {
         if (comment.indexOf("<c>") != -1 && comment.lastIndexOf("<c>") != -1)
@@ -47,5 +74,10 @@ class CommentToTagsParser {
             tags.returns = comment.substring(comment.indexOf("<returns>") + "<returns>".length, comment.lastIndexOf("<returns>"))
         if (comment.indexOf("<value>") != -1 && comment.lastIndexOf("<value>") != -1)
             tags.value = comment.substring(comment.indexOf("<value>") + "<value>".length, comment.lastIndexOf("<value>"))
+    }
+
+    fun createBlocks(sourceCode: StringBuffer){
+        val regex = Regex("///.*$");
+        
     }
 }

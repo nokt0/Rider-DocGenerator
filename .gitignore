@@ -3,4 +3,5 @@
 /gradlew
 /gradlew.bat
 /lib
-.idea/discord.xml
+/.idea/
+/out/
