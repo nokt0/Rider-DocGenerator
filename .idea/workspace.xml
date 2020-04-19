@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="ENABLE_SUITABLE_CONFIGURATION_CACHING" value="true" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+    <option name="showStatusBarWidget" value="true" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecc891c5-a37b-4428-a94f-75d4e1c561d4" name="Default Changelist" comment="" />
+    <list default="true" id="2f920736-80d6-4c47-94f9-6aa7c2d54b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Rider-DocGenerator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rider-DocGenerator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,12 +102,14 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -100,6 +134,17 @@
       <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src\main\resources" />
       <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src" />
     </key>
+  </component>
+  <component name="Regex">
+    <option name="pos1" value="466" />
+    <option name="pos2" value="466" />
+    <option name="pos3" value="122" />
+    <option name="pos4" value="932" />
+    <option name="pos5" value="122" />
+    <option name="autoUpdate" value="true" />
+    <option name="referenceOn" value="false" />
+    <option name="referencePos" value="0" />
+    <option name="showLabels" value="true" />
   </component>
   <component name="RunManager" selected="Gradle.CommentToTagsParserTest.createBlocks">
     <configuration name="CommentToTagsParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -126,7 +171,26 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest.createBlocks&quot;" />
+        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest.createBlocks&quot; --stacktrace" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CommentToTagsParserTest.example" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest.example&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -178,9 +242,17 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Gradle.Plugin" />
+      <item itemvalue="Gradle.CommentToTagsParserTest" />
+      <item itemvalue="Gradle.CommentToTagsParserTest.createBlocks" />
+      <item itemvalue="Gradle.Rider-DocGenerator [build]" />
+      <item itemvalue="Gradle.CommentToTagsParserTest.example" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.CommentToTagsParserTest.createBlocks" />
+        <item itemvalue="Gradle.CommentToTagsParserTest.example" />
         <item itemvalue="Gradle.CommentToTagsParserTest" />
         <item itemvalue="Gradle.Rider-DocGenerator [build]" />
       </list>
@@ -191,7 +263,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ecc891c5-a37b-4428-a94f-75d4e1c561d4" name="Default Changelist" comment="" />
+      <changelist id="2f920736-80d6-4c47-94f9-6aa7c2d54b20" name="Default Changelist" comment="" />
       <created>1587040545587</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -208,6 +280,8 @@
       <workItem from="1587227084331" duration="7498000" />
       <workItem from="1587308341421" duration="1022000" />
       <workItem from="1587321033211" duration="1432000" />
+      <workItem from="1587324470316" duration="262000" />
+      <workItem from="1587324748587" duration="3012000" />
     </task>
     <servers />
   </component>
@@ -219,10 +293,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1587056164948" />
-    <state x="121" y="0" key="#Project_Structure" timestamp="1587056121584">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="136" y="0" key="#Project_Structure" timestamp="1587324753974">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="121" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1587056121584" />
+    <state x="136" y="0" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1587324753974" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587056314061">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -259,22 +334,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587139902084" />
-    <state width="1237" height="291" key="GridCell.Tab.0.bottom" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="282" key="GridCell.Tab.0.bottom" timestamp="1587327911660">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1237" height="291" key="GridCell.Tab.0.center" timestamp="1587234590462">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="282" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587327911660" />
+    <state width="1398" height="282" key="GridCell.Tab.0.center" timestamp="1587327911659">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1237" height="291" key="GridCell.Tab.0.left" timestamp="1587234590462">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="282" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587327911659" />
+    <state width="1398" height="282" key="GridCell.Tab.0.left" timestamp="1587327911658">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1237" height="291" key="GridCell.Tab.0.right" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="282" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587327911658" />
+    <state width="1398" height="282" key="GridCell.Tab.0.right" timestamp="1587327911659">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1398" height="282" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587327911659" />
     <state width="1237" height="291" key="GridCell.Tab.1.bottom" timestamp="1587234590463">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -330,9 +409,5 @@
         <PinnedItemInfo typeName="org.bois.parser.CommentToTagsParser" fieldName="reader" />
       </pinned-members>
     </pin-to-top-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Rider_DocGenerator$Plugin.ic" NAME="Plugin Coverage Results" MODIFIED="1587231326560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Rider_DocGenerator$CommentToTagsParserTest.ic" NAME="CommentToTagsParserTest Coverage Results" MODIFIED="1587231342057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

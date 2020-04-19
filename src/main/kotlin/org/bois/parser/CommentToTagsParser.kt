@@ -1,32 +1,37 @@
 package org.bois.parser
+
 import java.io.BufferedReader
 import java.io.LineNumberReader
 import java.lang.StringBuffer;
 
 class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
-    var reader : LineNumberReader = LineNumberReader(inputReader)
+    var reader: LineNumberReader = LineNumberReader(inputReader)
 
     fun createBlocks(): ArrayList<StringBuffer> {
         var startDocComment: Int = -1
-        val commentBlocks : ArrayList<StringBuffer> = ArrayList()
-        var block : StringBuffer = StringBuffer()
+        val commentBlocks: ArrayList<StringBuffer> = ArrayList()
+        var block = StringBuffer()
 
         do {
             val line = reader.readLine()
-            if(line != null && line.indexOf("///") != -1){
-                if(startDocComment != -1) {
+            if (line!=null && line.indexOf("///") != -1) {
+                if (startDocComment != -1) {
                     startDocComment = reader.lineNumber
                 }
                 block.append(line)
-            }else{
+            }
+            else if(line!=null&&line.isEmpty()){
+                continue
+            }
+            else {
                 block.append(line)
                 commentBlocks.add(block)
                 block = StringBuffer()
                 startDocComment = -1
             }
 
-        }while (line != null)
+        } while (line != null)
 
         return commentBlocks
     }
@@ -52,32 +57,52 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         if (comment.indexOf("<para>") != -1 && comment.lastIndexOf("<para>") != -1)
             tags.para = comment.substring(comment.indexOf("<para>") + "<para>".length, comment.lastIndexOf("<para>"))
         if (comment.indexOf("<param>") != -1 && comment.lastIndexOf("<param>") != -1)
-            tags.param = comment.substring(comment.indexOf("<param>") + "<param>".length, comment.lastIndexOf("<param>"))
+            tags.param =
+                comment.substring(comment.indexOf("<param>") + "<param>".length, comment.lastIndexOf("<param>"))
         if (comment.indexOf("<paramref>") != -1 && comment.lastIndexOf("<paramref>") != -1)
-            tags.paramref = comment.substring(comment.indexOf("<paramref>") + "<paramref>".length, comment.lastIndexOf("<paramref>"))
+            tags.paramref = comment.substring(
+                comment.indexOf("<paramref>") + "<paramref>".length,
+                comment.lastIndexOf("<paramref>")
+            )
         if (comment.indexOf("<permission>") != -1 && comment.lastIndexOf("<permission>") != -1)
-            tags.permission = comment.substring(comment.indexOf("<permission>") + "<permission>".length, comment.lastIndexOf("<permission>"))
+            tags.permission = comment.substring(
+                comment.indexOf("<permission>") + "<permission>".length,
+                comment.lastIndexOf("<permission>")
+            )
         if (comment.indexOf("<inheritdoc>") != -1 && comment.lastIndexOf("<inheritdoc>") != -1)
-            tags.inheritdoc = comment.substring(comment.indexOf("<inheritdoc>") + "<inheritdoc>".length, comment.lastIndexOf("<inheritdoc>"))
+            tags.inheritdoc = comment.substring(
+                comment.indexOf("<inheritdoc>") + "<inheritdoc>".length,
+                comment.lastIndexOf("<inheritdoc>")
+            )
         if (comment.indexOf("<see>") != -1 && comment.lastIndexOf("<see>") != -1)
             tags.see = comment.substring(comment.indexOf("<see>") + "<see>".length, comment.lastIndexOf("<see>"))
         if (comment.indexOf("<seealso>") != -1 && comment.lastIndexOf("<seealso>") != -1)
-            tags.seealso = comment.substring(comment.indexOf("<seealso>")+ "<seealso>".length, comment.lastIndexOf("<seealso>"))
+            tags.seealso =
+                comment.substring(comment.indexOf("<seealso>") + "<seealso>".length, comment.lastIndexOf("<seealso>"))
         if (comment.indexOf("<summary>") != -1 && comment.lastIndexOf("<summary>") != -1)
-            tags.summary = comment.substring(comment.indexOf("<summary>")+ "<summary>".length, comment.lastIndexOf("<summary>"))
+            tags.summary =
+                comment.substring(comment.indexOf("<summary>") + "<summary>".length, comment.lastIndexOf("<summary>"))
         if (comment.indexOf("<typeparam>") != -1 && comment.lastIndexOf("<typeparam>") != -1)
-            tags.typeparam = comment.substring(comment.indexOf("<typeparam>")+ "<typeparam>".length, comment.lastIndexOf("<typeparam>"))
+            tags.typeparam = comment.substring(
+                comment.indexOf("<typeparam>") + "<typeparam>".length,
+                comment.lastIndexOf("<typeparam>")
+            )
         if (comment.indexOf("<typeparamref>") != -1 && comment.lastIndexOf("<typeparamref>") != -1)
             tags.typeparamref =
-                comment.substring(comment.indexOf("<typeparamref>") + "<typeparamref>".length, comment.lastIndexOf("<typeparamref>"))
+                comment.substring(
+                    comment.indexOf("<typeparamref>") + "<typeparamref>".length,
+                    comment.lastIndexOf("<typeparamref>")
+                )
         if (comment.indexOf("<returns>") != -1 && comment.lastIndexOf("<returns>") != -1)
-            tags.returns = comment.substring(comment.indexOf("<returns>") + "<returns>".length, comment.lastIndexOf("<returns>"))
+            tags.returns =
+                comment.substring(comment.indexOf("<returns>") + "<returns>".length, comment.lastIndexOf("<returns>"))
         if (comment.indexOf("<value>") != -1 && comment.lastIndexOf("<value>") != -1)
-            tags.value = comment.substring(comment.indexOf("<value>") + "<value>".length, comment.lastIndexOf("<value>"))
+            tags.value =
+                comment.substring(comment.indexOf("<value>") + "<value>".length, comment.lastIndexOf("<value>"))
     }
 
-    fun createBlocks(sourceCode: StringBuffer){
+    fun createBlocks(sourceCode: StringBuffer) {
         val regex = Regex("///.*$");
-        
+
     }
 }
