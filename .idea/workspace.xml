@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ecc891c5-a37b-4428-a94f-75d4e1c561d4" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Rider-DocGenerator" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Rider-DocGenerator" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Enum" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1acgxr4TOTQhR4GPVrqRDu3ZgF5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.bois.action" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.bois.parser" />
+      <recent name="org.bois.action" />
+      <recent name="action" />
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src\test\kotlin\parser" />
+      <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src\main\kotlin" />
+      <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src\main\kotlin\org\bois\" />
+      <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src\main\resources" />
+      <recent name="C:\Users\berns\OneDrive\Documents\Code\Rider-DocGenerator\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.CommentToTagsParserTest.createBlocks">
+    <configuration name="CommentToTagsParserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CommentToTagsParserTest.createBlocks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest.createBlocks&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Plugin" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":runIde" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Rider-DocGenerator [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.CommentToTagsParserTest.createBlocks" />
+        <item itemvalue="Gradle.CommentToTagsParserTest" />
+        <item itemvalue="Gradle.Rider-DocGenerator [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ecc891c5-a37b-4428-a94f-75d4e1c561d4" name="Default Changelist" comment="" />
+      <created>1587040545587</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587040545587</updated>
+      <workItem from="1587040550051" duration="3364000" />
+      <workItem from="1587045701586" duration="15413000" />
+      <workItem from="1587133528950" duration="215000" />
+      <workItem from="1587133863351" duration="81000" />
+      <workItem from="1587133997662" duration="310000" />
+      <workItem from="1587134349567" duration="4051000" />
+      <workItem from="1587154531510" duration="5550000" />
+      <workItem from="1587198860338" duration="4791000" />
+      <workItem from="1587226876178" duration="136000" />
+      <workItem from="1587227084331" duration="7498000" />
+      <workItem from="1587308341421" duration="1022000" />
+      <workItem from="1587321033211" duration="1432000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Intentions" timestamp="1587056164948">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1587056164948" />
+    <state x="121" y="0" key="#Project_Structure" timestamp="1587056121584">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.680@0.0.1280.680" timestamp="1587056121584" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587056314061">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1587056314061" />
+    <state x="395" y="139" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587231100063">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="395" y="139" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1587231100063" />
+    <state x="423" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1587156355224">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="423" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1587156355224" />
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587051133705">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1587051133705" />
+    <state x="269" y="0" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1587056405810">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="269" y="0" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1280.680@0.0.1280.680" timestamp="1587056405810" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1587230562396">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1587230562396" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587159189205">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1587159189205" />
+    <state x="420" y="59" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1587154882056">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="420" y="59" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1587154882056" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1587139902084">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587139902084" />
+    <state width="1237" height="291" key="GridCell.Tab.0.bottom" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1237" height="291" key="GridCell.Tab.0.center" timestamp="1587234590462">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
+    <state width="1237" height="291" key="GridCell.Tab.0.left" timestamp="1587234590462">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
+    <state width="1237" height="291" key="GridCell.Tab.0.right" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1237" height="291" key="GridCell.Tab.1.bottom" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1237" height="291" key="GridCell.Tab.1.center" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1237" height="291" key="GridCell.Tab.1.left" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1237" height="291" key="GridCell.Tab.1.right" timestamp="1587234590463">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state x="221" y="76" key="IDE.errors.dialog" timestamp="1587040632387">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="221" y="76" key="IDE.errors.dialog/0.0.1280.680@0.0.1280.680" timestamp="1587040632387" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1587135131255">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587135131255" />
+    <state x="376" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587056573876">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="376" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1587056573876" />
+    <state x="0" y="0" width="585" height="680" key="find.popup" timestamp="1587135060631">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" width="585" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1587135060631" />
+    <state x="91" y="0" key="new project wizard" timestamp="1587051097087">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1587051097087" />
+    <state x="412" y="93" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1587055492733">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="412" y="93" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1587055492733" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1587060441175">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1587060441175" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587229696167">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1587229696167" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo typeName="org.bois.parser.CommentToTagsParser" fieldName="reader" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Rider_DocGenerator$Plugin.ic" NAME="Plugin Coverage Results" MODIFIED="1587231326560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Rider_DocGenerator$CommentToTagsParserTest.ic" NAME="CommentToTagsParserTest Coverage Results" MODIFIED="1587231342057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
