@@ -166,6 +166,25 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="CommentToTagsParserTest.createBlockTimmy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;parser.CommentToTagsParserTest.createBlockTimmy&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="CommentToTagsParserTest.createBlocks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -248,10 +267,12 @@
       <item itemvalue="Gradle.CommentToTagsParserTest.createBlocks" />
       <item itemvalue="Gradle.Rider-DocGenerator [build]" />
       <item itemvalue="Gradle.CommentToTagsParserTest.example" />
+      <item itemvalue="Gradle.CommentToTagsParserTest.createBlockTimmy" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.CommentToTagsParserTest.createBlocks" />
+        <item itemvalue="Gradle.CommentToTagsParserTest.createBlockTimmy" />
         <item itemvalue="Gradle.CommentToTagsParserTest.example" />
         <item itemvalue="Gradle.CommentToTagsParserTest" />
         <item itemvalue="Gradle.Rider-DocGenerator [build]" />
@@ -281,7 +302,7 @@
       <workItem from="1587308341421" duration="1022000" />
       <workItem from="1587321033211" duration="1432000" />
       <workItem from="1587324470316" duration="262000" />
-      <workItem from="1587324748587" duration="3012000" />
+      <workItem from="1587324748587" duration="8248000" />
     </task>
     <servers />
   </component>
@@ -334,42 +355,46 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587139902084" />
-    <state width="1398" height="282" key="GridCell.Tab.0.bottom" timestamp="1587327911660">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1587388101405">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1398" height="282" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587327911660" />
-    <state width="1398" height="282" key="GridCell.Tab.0.center" timestamp="1587327911659">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587388101405" />
+    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1587388101405">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1398" height="282" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587327911659" />
-    <state width="1398" height="282" key="GridCell.Tab.0.left" timestamp="1587327911658">
+    <state width="1398" height="285" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587388101405" />
+    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1587388101404">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1398" height="282" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587327911658" />
-    <state width="1398" height="282" key="GridCell.Tab.0.right" timestamp="1587327911659">
+    <state width="1398" height="285" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587388101404" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1587388101405">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1398" height="282" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587327911659" />
-    <state width="1237" height="291" key="GridCell.Tab.1.bottom" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587388101405" />
+    <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1587384512037">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1237" height="291" key="GridCell.Tab.1.center" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="304" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587384512037" />
+    <state width="1398" height="304" key="GridCell.Tab.1.center" timestamp="1587384512036">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1237" height="291" key="GridCell.Tab.1.left" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="304" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1587384512036" />
+    <state width="1398" height="304" key="GridCell.Tab.1.left" timestamp="1587384512036">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1237" height="291" key="GridCell.Tab.1.right" timestamp="1587234590463">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1398" height="304" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1587384512036" />
+    <state width="1398" height="304" key="GridCell.Tab.1.right" timestamp="1587384512037">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
+    <state width="1398" height="304" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1587384512037" />
     <state x="221" y="76" key="IDE.errors.dialog" timestamp="1587040632387">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -378,6 +403,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587135131255" />
+    <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1587328392947">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="720" height="450" key="XDebugger.FullValuePopup/0.0.1440.900@0.0.1440.900" timestamp="1587328392947" />
     <state x="376" y="229" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1587056573876">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -407,6 +436,7 @@
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="org.bois.parser.CommentToTagsParser" fieldName="reader" />
+        <PinnedItemInfo typeName="org.bois.parser.CommentToTagsParser" fieldName="tags" />
       </pinned-members>
     </pin-to-top-manager>
   </component>
