@@ -8,55 +8,27 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
     var reader: LineNumberReader = LineNumberReader(inputReader)
 
-//    fun createBlocks(): ArrayList<StringBuffer> {
-//        var startDocComment: Int = -1
-//        val commentBlocks: ArrayList<StringBuffer> = ArrayList()
-//        var block = StringBuffer()
-//
-//        do {
-//            val line = reader.readLine()
-//            if (line != null && line.indexOf("///") != -1) {
-//                if (startDocComment != -1) {
-//                    startDocComment = reader.lineNumber
-//                }
-//                block.append(line)
-//            } else if (line != null && line.isEmpty()) {
-//                continue
-//            } else {
-//                block.append(line)
-//                commentBlocks.add(block)
-//                block = StringBuffer()
-//                startDocComment = -1
-//            }
-//
-//        } while (line != null)
-//
-//        return commentBlocks
-//    }
+    fun createBlocks(): ArrayList<ParsedBlockData> {
+        var startDocComment = false
+        val commentBlocks = ArrayList<ParsedBlockData>()
+        var block = ArrayList<String>()
 
-    fun createBlocks(): ArrayList<StringBuffer> {
-        val commentBlock: ArrayList<StringBuffer> = ArrayList()
-        var block = StringBuffer()
-        var flag: Boolean = false
-
-        var line = reader.readLine()
-        while (line != null) {
-            if (line.isEmpty() || line.indexOf("//") != -1)
-                continue
-            if (line.indexOf("///") != -1) {
-                block.append(line)
-                flag = true
+        do {
+            val line = reader.readLine()
+            if (line != null && line.indexOf("///") != -1) {
+                if (!startDocComment) {
+                    startDocComment = true
+                }
+                block.add(line.trim() + System.lineSeparator())
+            } else if (startDocComment) {
+                val parsedBlock = ParsedBlockData(block, line.trim())
+                commentBlocks.add(parsedBlock)
+                block = ArrayList()
+                startDocComment = false
             }
-            else if (flag) {
-                block.append(line)
-                commentBlock.add(block)
-                block = StringBuffer()
-                flag = false
-            }
-            line = reader.readLine()
-        }
+        } while (line != null)
 
-        return commentBlock
+        return commentBlocks
     }
 
     fun parse(comment: StringBuffer) {
