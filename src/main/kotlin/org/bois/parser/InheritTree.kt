@@ -1,5 +1,6 @@
 package org.bois.parser
 
 class InheritTree {
-    var map : HashMap<String,ParsedClass>  = HashMap<String, ParsedClass>()
+    var parents = HashMap<String, ArrayList<String>>()
+    var children = HashMap<String, ArrayList<String>>()
 }
