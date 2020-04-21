@@ -5,6 +5,6 @@ class ParsedClass(val type: HeaderType, val namespace: String, val methods: List
     var children : List <ParsedClass> = ArrayList <ParsedClass>()
 
     fun createParentsAndChildren(tree: InheritTree){
-        tree.map
+
     }
 }
