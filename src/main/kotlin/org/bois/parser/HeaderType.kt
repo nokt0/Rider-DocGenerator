@@ -1,12 +1,12 @@
 package org.bois.parser
 
 enum class HeaderType(val type:String) {
-    INTERFACE("INTERFACE"),
-    CLASS("CLASS"),
-    ABSTRACT_CLASS("ABSTRACT_CLASS"),
-    VIRTUAL("VIRTUAL"),
-    STRUCT("STRUCT"),
-    ENUM("ENUM");
+    INTERFACE("interface"),
+    CLASS("class"),
+    ABSTRACT_CLASS("abstract class"),
+    VIRTUAL("virtual"),
+    STRUCT("struct"),
+    ENUM("enum");
 
     override fun toString(): String {
         return type

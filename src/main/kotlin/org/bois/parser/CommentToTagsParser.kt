@@ -2,7 +2,8 @@ package org.bois.parser
 
 import java.io.BufferedReader
 import java.io.LineNumberReader
-import java.lang.StringBuffer;
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
@@ -12,7 +13,6 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>()
-
         do {
             val line = reader.readLine()
             if (line != null && line.indexOf("///") != -1) {
@@ -29,6 +29,43 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         } while (line != null)
 
         return commentBlocks
+    }
+
+    fun createTree(inputReader: BufferedReader) {
+        var startDocComment = false
+        val reader = LineNumberReader(inputReader)
+        val commentBlocks = ArrayList<ParsedBlockData>()
+        do {
+            val line = reader.readLine()
+            var bracketsCount = 0
+            var type: HeaderType
+            if (line.indexOf("{") != -1) {
+                bracketsCount++
+            }
+            if (line.indexOf("}") != -1) {
+                bracketsCount--
+            }
+            HeaderType.values().forEach { it ->
+                    if (line.indexOf(it.toString()) != -1) {
+                        type = it
+                    }
+                }
+            
+
+            if (line != null && line.indexOf("///") != -1) {
+                if (!startDocComment) {
+                    startDocComment = true
+                }
+                block.add(line.trim() + System.lineSeparator())
+            } else if (startDocComment) {
+                val parsedBlock = ParsedBlockData(block, line.trim())
+                commentBlocks.add(parsedBlock)
+                block = ArrayList()
+                startDocComment = false
+            }
+        } while (line != null)
+
+
     }
 
     fun parse(comment: StringBuffer) {
