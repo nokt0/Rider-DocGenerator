@@ -8,13 +8,17 @@ import kotlin.collections.ArrayList
 class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
     var reader: LineNumberReader = LineNumberReader(inputReader)
+    var tree: InheritTree = InheritTree()
 
     fun createBlocks(): ArrayList<ParsedBlockData> {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>()
+        var parents = ArrayList<String>()
+        var className: String? = null
         do {
             val line = reader.readLine()
+            parents.clear()
             if (line != null && line.indexOf("///") != -1) {
                 if (!startDocComment) {
                     startDocComment = true
@@ -22,6 +26,37 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                 block.add(line.trim() + System.lineSeparator())
             } else if (startDocComment) {
                 val parsedBlock = ParsedBlockData(block, line.trim())
+
+                if (line.indexOf("class") != -1) {
+
+                    var endIndex = 0
+                    if (line.indexOf(":") != -1)
+                        endIndex = line.indexOf(":") - 1
+                    else
+                        endIndex = line.length
+                    className = line.subSequence(line.indexOf("class") + 6, endIndex).trim().toString()
+
+                    if (line.indexOf(":") != -1) {
+                        var parentPart = line.substring(line.indexOf(":") + 1)
+                        parents.addAll(parentPart.trim().split("[\\s]*[,]+[\\s]*"))
+                    }
+                }
+                if (className != null) {
+                    if (tree.parents.containsKey(className))
+                        tree.parents.get(className)!!.addAll(parents)
+                    else
+                        tree.parents.put(className, parents)
+
+                    parents.forEach {
+                        if (tree.children.containsKey(it))
+                            tree.children.get(it)?.add(className)
+                        else {
+                            var newChildrenArray = ArrayList<String>()
+                            newChildrenArray.add(className)
+                            tree.children.put(it, newChildrenArray)
+                        }
+                    }
+                }
                 commentBlocks.add(parsedBlock)
                 block = ArrayList()
                 startDocComment = false
@@ -31,42 +66,53 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         return commentBlocks
     }
 
-    fun createTree(inputReader: BufferedReader) {
-        var startDocComment = false
-        val reader = LineNumberReader(inputReader)
-        val commentBlocks = ArrayList<ParsedBlockData>()
-        do {
-            val line = reader.readLine()
-            var bracketsCount = 0
-            var type: HeaderType
-            if (line.indexOf("{") != -1) {
-                bracketsCount++
-            }
-            if (line.indexOf("}") != -1) {
-                bracketsCount--
-            }
-            HeaderType.values().forEach { it ->
-                    if (line.indexOf(it.toString()) != -1) {
-                        type = it
-                    }
-                }
-            
-
-            if (line != null && line.indexOf("///") != -1) {
-                if (!startDocComment) {
-                    startDocComment = true
-                }
-                block.add(line.trim() + System.lineSeparator())
-            } else if (startDocComment) {
-                val parsedBlock = ParsedBlockData(block, line.trim())
-                commentBlocks.add(parsedBlock)
-                block = ArrayList()
-                startDocComment = false
-            }
-        } while (line != null)
-
-
+    fun treePrint() {
+        println("Parents hashMap")
+        tree.parents.forEach {
+            println("Child: " + it.key + " Parents: " + it.value.toString())
+        }
+        println("Children hashMap")
+        tree.parents.forEach {
+            println("Parent: " + it.key + " Children: " + it.value.toString())
+        }
     }
+
+//    fun createTree(inputReader: BufferedReader) {
+//        var startDocComment = false
+//        val reader = LineNumberReader(inputReader)
+//        val commentBlocks = ArrayList<ParsedBlockData>()
+//        do {
+//            val line = reader.readLine()
+//            var bracketsCount = 0
+//            var type: HeaderType
+//            if (line.indexOf("{") != -1) {
+//                bracketsCount++
+//            }
+//            if (line.indexOf("}") != -1) {
+//                bracketsCount--
+//            }
+//            HeaderType.values().forEach { it ->
+//                    if (line.indexOf(it.toString()) != -1) {
+//                        type = it
+//                    }
+//                }
+//
+//
+//            if (line != null && line.indexOf("///") != -1) {
+//                if (!startDocComment) {
+//                    startDocComment = true
+//                }
+//                block.add(line.trim() + System.lineSeparator())
+//            } else if (startDocComment) {
+//                val parsedBlock = ParsedBlockData(block, line.trim())
+//                commentBlocks.add(parsedBlock)
+//                block = ArrayList()
+//                startDocComment = false
+//            }
+//        } while (line != null)
+//
+//
+//    }
 
     fun parse(comment: StringBuffer) {
         if (comment.indexOf("<c>") != -1 && comment.lastIndexOf("<c>") != -1)

@@ -7,7 +7,7 @@
 /// Longer comments can be associated with a type or member through
 /// the remarks tag.
 /// </remarks>
-public class TestClass : TestInterface
+public class TestClass : TestInterface, TestInteface1
 {
     /// <summary>
     /// Store for the Name property.
