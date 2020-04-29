@@ -26,13 +26,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f920736-80d6-4c47-94f9-6aa7c2d54b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/HeaderType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/ParsedClass.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/ParsedMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/parser/sourceHierarchy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/Tag.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/Tag.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/parser/CommentToTagsParserTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/parser/CommentToTagsParserTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/parser/sourceCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/parser/sourceCode.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +73,8 @@
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -304,7 +301,10 @@
       <workItem from="1587324470316" duration="262000" />
       <workItem from="1587324748587" duration="8248000" />
       <workItem from="1587388499901" duration="344000" />
-      <workItem from="1587470305293" duration="5171000" />
+      <workItem from="1587470305293" duration="6200000" />
+      <workItem from="1587550868876" duration="84000" />
+      <workItem from="1587721001818" duration="1448000" />
+      <workItem from="1588186727514" duration="5510000" />
     </task>
     <servers />
   </component>
@@ -357,26 +357,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587139902084" />
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1587475994825">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1588192133983">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1587475994825" />
-    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1587475994824">
+    <state width="1398" height="285" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588192133983" />
+    <state width="1398" height="285" key="GridCell.Tab.0.center" timestamp="1588192133982">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1398" height="285" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1587475994824" />
-    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1587475994823">
+    <state width="1398" height="285" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1588192133982" />
+    <state width="1398" height="285" key="GridCell.Tab.0.left" timestamp="1588192133982">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587234590462" />
-    <state width="1398" height="285" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1587475994823" />
-    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1587475994825">
+    <state width="1398" height="285" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1588192133982" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right" timestamp="1588192133983">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1237" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587234590463" />
-    <state width="1398" height="285" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1587475994825" />
+    <state width="1398" height="285" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588192133983" />
     <state width="1398" height="304" key="GridCell.Tab.1.bottom" timestamp="1587384512037">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

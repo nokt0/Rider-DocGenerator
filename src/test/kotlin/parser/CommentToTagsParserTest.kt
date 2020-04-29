@@ -22,9 +22,12 @@ internal class CommentToTagsParserTest {
     fun createBlocks() {
         val reader =
             BufferedReader(FileReader("src/test/kotlin/parser/sourceCode.cs"))
+            //BufferedReader(FileReader("src/test/kotlin/parser/sourceHierarchy.cs"))
         val parser = CommentToTagsParser(reader)
         val result = parser.createBlocks()
         println(result)
+        println()
+        parser.treePrint()
     }
 
 }
