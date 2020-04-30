@@ -7,7 +7,7 @@
 /// Longer comments can be associated with a type or member through
 /// the remarks tag.
 /// </remarks>
-public class TestClass : TestInterface, TestInteface1
+public class TestClass : TestInterface, TestInterface1
 {
     /// <summary>
     /// Store for the Name property.
@@ -100,4 +100,16 @@ interface TestInterface
     /// The method returns an integer.
     /// </returns>
     int InterfaceMethod(int n);
+}
+
+/// <summary>
+/// Class level summary documentation goes here.
+/// </summary>
+/// <remarks>
+/// Longer comments can be associated with a type or member through
+/// the remarks tag.
+/// </remarks>
+public class TestClass1 : TestInterface, TestInterface1
+{
+
 }
