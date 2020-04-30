@@ -23,21 +23,19 @@ class CommentToTagsParser(inputReader: BufferedReader) {
 
             if (line.indexOf(":") != -1) {
                 var parentPart = line.substring(line.indexOf(":") + 1)
-                parents.addAll(parentPart.trim().split("[,]+[/s]*"))
+                parents.addAll(parentPart.trim().split(","))
             }
 
-            if (className != null) {
+            if (parents.isNotEmpty()) {
                 if (tree.parents.containsKey(className)) {
-                    parents.addAll(tree.parents.get(className)!!)
-                    tree.parents.remove(className)
-                    tree.parents[className] = parents
+                    tree.parents[className]!!.addAll(parents)
                 } else
                     tree.parents[className] = parents
 
                 parents.forEach {
 
                     if (tree.children.containsKey(it))
-                        tree.children.get(it)?.add(className)
+                        tree.children[it]!!.add(className)
                     else {
                         var newChildrenArray = ArrayList<String>()
                         newChildrenArray.add(className)
@@ -52,11 +50,11 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>()
-        var parents = ArrayList<String>()
+
 
         do {
             val line = reader.readLine()
-            parents.clear()
+            var parents = ArrayList<String>()
             if (line != null && line.indexOf("///") != -1) {
                 if (!startDocComment) {
                     startDocComment = true
