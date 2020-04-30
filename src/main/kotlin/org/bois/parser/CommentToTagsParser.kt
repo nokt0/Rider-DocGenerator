@@ -11,12 +11,49 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     var reader: LineNumberReader = LineNumberReader(inputReader)
     var tree: InheritTree = InheritTree()
 
+    fun createTree(line: String, parents: ArrayList<String>) {
+        var className: String? = null
+        if (line.indexOf("class") != -1) {
+            var endIndex = 0
+            if (line.indexOf(":") != -1)
+                endIndex = line.indexOf(":") - 1
+            else
+                endIndex = line.length
+            className = line.subSequence(line.indexOf("class") + 6, endIndex).trim().toString()
+
+            if (line.indexOf(":") != -1) {
+                var parentPart = line.substring(line.indexOf(":") + 1)
+                parents.addAll(parentPart.trim().split("[,]+[/s]*"))
+            }
+
+            if (className != null) {
+                if (tree.parents.containsKey(className)) {
+                    parents.addAll(tree.parents.get(className)!!)
+                    tree.parents.remove(className)
+                    tree.parents[className] = parents
+                } else
+                    tree.parents[className] = parents
+
+                parents.forEach {
+
+                    if (tree.children.containsKey(it))
+                        tree.children.get(it)?.add(className)
+                    else {
+                        var newChildrenArray = ArrayList<String>()
+                        newChildrenArray.add(className)
+                        tree.children[it] = newChildrenArray
+                    }
+                }
+            }
+        }
+    }
+
     fun createBlocks(): ArrayList<ParsedBlockData> {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>()
         var parents = ArrayList<String>()
-        var className: String? = null
+
         do {
             val line = reader.readLine()
             parents.clear()
@@ -27,40 +64,7 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                 block.add(line.trim() + System.lineSeparator())
             } else if (startDocComment) {
                 val parsedBlock = ParsedBlockData(block, line.trim())
-
-                if (line.indexOf("class") != -1) {
-
-                    var endIndex = 0
-                    if (line.indexOf(":") != -1)
-                        endIndex = line.indexOf(":") - 1
-                    else
-                        endIndex = line.length
-                    className = line.subSequence(line.indexOf("class") + 6, endIndex).trim().toString()
-
-                    if (line.indexOf(":") != -1) {
-                        var parentPart = line.substring(line.indexOf(":") + 1)
-                        parents.addAll(parentPart.trim().split(","))
-                    }
-                }
-                if (className != null) {
-                    if (tree.parents.containsKey(className)) {
-                        parents.addAll(tree.parents.get(className)!!)
-                        tree.parents.remove(className)
-                        tree.parents[className] = parents
-                    }
-                    else
-                        tree.parents[className] = parents
-
-                    parents.forEach {
-                        if (tree.children.containsKey(it))
-                            tree.children.get(it)?.add(className)
-                        else {
-                            var newChildrenArray = ArrayList<String>()
-                            newChildrenArray.add(className)
-                            tree.children[it] = newChildrenArray
-                        }
-                    }
-                }
+                createTree(line, parents)
                 commentBlocks.add(parsedBlock)
                 block = ArrayList()
                 startDocComment = false
