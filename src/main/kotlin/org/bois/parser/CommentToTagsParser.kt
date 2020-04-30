@@ -1,5 +1,6 @@
 package org.bois.parser
 
+import com.jetbrains.rd.util.string.print
 import java.io.BufferedReader
 import java.io.LineNumberReader
 import java.util.*
@@ -38,14 +39,17 @@ class CommentToTagsParser(inputReader: BufferedReader) {
 
                     if (line.indexOf(":") != -1) {
                         var parentPart = line.substring(line.indexOf(":") + 1)
-                        parents.addAll(parentPart.trim().split("[\\s]*[,]+[\\s]*"))
+                        parents.addAll(parentPart.trim().split(","))
                     }
                 }
                 if (className != null) {
-                    if (tree.parents.containsKey(className))
-                        tree.parents.get(className)!!.addAll(parents)
+                    if (tree.parents.containsKey(className)) {
+                        parents.addAll(tree.parents.get(className)!!)
+                        tree.parents.remove(className)
+                        tree.parents[className] = parents
+                    }
                     else
-                        tree.parents.put(className, parents)
+                        tree.parents[className] = parents
 
                     parents.forEach {
                         if (tree.children.containsKey(it))
@@ -53,7 +57,7 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                         else {
                             var newChildrenArray = ArrayList<String>()
                             newChildrenArray.add(className)
-                            tree.children.put(it, newChildrenArray)
+                            tree.children[it] = newChildrenArray
                         }
                     }
                 }
@@ -67,12 +71,12 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     }
 
     fun treePrint() {
-        println("Parents hashMap")
+        println("(((Parents hashMap)))")
         tree.parents.forEach {
             println("Child: " + it.key + " Parents: " + it.value.toString())
         }
-        println("Children hashMap")
-        tree.parents.forEach {
+        println("(((Children hashMap)))")
+        tree.children.forEach {
             println("Parent: " + it.key + " Children: " + it.value.toString())
         }
     }
