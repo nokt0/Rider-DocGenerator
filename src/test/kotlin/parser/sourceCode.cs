@@ -1,5 +1,5 @@
 // If compiling from the command line, compile with: -doc:YourFileName.xml
-
+namespace test{
 /// <summary>
 /// Class level summary documentation goes here.
 /// </summary>
@@ -112,4 +112,5 @@ interface TestInterface
 public class TestClass1 : TestInterface, TestInterface1
 {
 
+}
 }
