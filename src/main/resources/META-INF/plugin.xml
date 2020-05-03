@@ -15,12 +15,16 @@
     </extensions>
 
     <actions>
-        <action id="org.bois.action.GenerateDocAction" class="org.bois.action.GenerateDocAction"
-                text="Action DocGenerator: Create Docs" description="Create docs">
+
+        <action id="org.bois.action.GenerateDocAction"
+                icon="/META-INF/pluginIcon2.svg"
+                description="Create docs"
+                class="org.bois.action.GenerateDocAction">
             <override-text place="MainMenu" text="Generate Docs"/>
             <keyboard-shortcut first-keystroke="control alt /" second-keystroke="C" keymap="$default"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
         </action>
     </actions>
 </idea-plugin>
