@@ -2,7 +2,6 @@ package org.bois.parser
 
 import java.io.BufferedReader
 import java.io.LineNumberReader
-import java.util.*
 import kotlin.collections.ArrayList
 
 class CommentToTagsParser(inputReader: BufferedReader) {
@@ -51,9 +50,9 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>();
-        var headerString: String? = null;
+        var headerType: HeaderType? = null;
         var bracketsCount = 0;
-        var bracketsClosed = false;
+        var bracketsClosed = true;
 
         /** Функция считает скобки и определяет закрылась ли их последовательность
          * Нам нужно это для того, чтобы точно знать что найденные строки "class,interface..."
@@ -74,17 +73,18 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         do {
             val line = reader.readLine()
             val parents = ArrayList<String>()
+            var headerString: String? = null;
 
             if (line != null) {
-                val namespacePos = line.indexOf("namespace");
+                val isNamespace = Regex("""\bnamespace\b""").matches(line)
                 var openBracketPos = line.indexOf("{");
                 var closeBracketPos = line.lastIndexOf("}");
 
                 // Если в строке содержится namespace записываем его название
                 // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
-                if (namespacePos != -1) {
+                if (isNamespace) {
                     changeBracketCount('-')
-                    this.namespace = line.substring(namespacePos, line.length).replace("{", "");
+                    this.namespace = line.substring(0, line.length).replace("{", "").replace(Regex("""\bnamespace\b"""), "");
                 }
 
                 if (bracketsClosed) {
@@ -105,9 +105,10 @@ class CommentToTagsParser(inputReader: BufferedReader) {
 
                     // Поиск объявления класса,интерфейса ...
                     for (header in HeaderType.values()) {
-                        val headerIndex = line.indexOf(header.toString());
-                        if (headerIndex in (openBracketPos + 1) until closeBracketPos) {
-                            headerString = line.substring(headerIndex, line.length).replace(Regex("[{,}]"), "")
+                        val headerIndex = Regex("\b" + header.toString() + "\b").matches(line);
+                        if (headerIndex) {
+                            headerString = line.replace(Regex("[{,}]"), "")
+                            headerType = header;
                         }
                     }
 
@@ -123,7 +124,7 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                     if(headerString == null){
                         headerString = line.trim();
                     }
-                    val parsedBlock = ParsedBlockData(block, headerString)
+                    val parsedBlock = ParsedBlockData(block, headerString, this.namespace,headerType)
                     createTree(line, parents)
                     commentBlocks.add(parsedBlock)
                     block = ArrayList()
