@@ -1,6 +1,5 @@
 package org.bois.parser
 
-import com.jetbrains.rd.util.string.print
 import java.io.BufferedReader
 import java.io.LineNumberReader
 import java.util.*
@@ -10,6 +9,8 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     val tags = TagsStruct()
     var reader: LineNumberReader = LineNumberReader(inputReader)
     var tree: InheritTree = InheritTree()
+    var namespace: String? = null
+
 
     fun createTree(line: String, parents: ArrayList<String>) {
         var className: String? = null
@@ -49,26 +50,87 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     fun createBlocks(): ArrayList<ParsedBlockData> {
         var startDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
-        var block = ArrayList<String>()
+        var block = ArrayList<String>();
+        var headerString: String? = null;
+        var bracketsCount = 0;
+        var bracketsClosed = false;
+
+        /** Функция считает скобки и определяет закрылась ли их последовательность
+         * Нам нужно это для того, чтобы точно знать что найденные строки "class,interface..."
+         * точно являются объявлением, а не просто словом в какой то строке.
+         */
+        fun changeBracketCount(operation: Char) {
+            when (operation) {
+                '+' -> bracketsCount++;
+                '-' -> bracketsCount--;
+            }
+
+            if (bracketsCount == 0) {
+                bracketsClosed = true;
+            }
+        }
 
 
         do {
             val line = reader.readLine()
-            var parents = ArrayList<String>()
-            if (line != null && line.indexOf("///") != -1) {
-                if (!startDocComment) {
-                    startDocComment = true
+            val parents = ArrayList<String>()
+
+            if (line != null) {
+                val namespacePos = line.indexOf("namespace");
+                var openBracketPos = line.indexOf("{");
+                var closeBracketPos = line.lastIndexOf("}");
+
+                // Если в строке содержится namespace записываем его название
+                // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
+                if (namespacePos != -1) {
+                    changeBracketCount('-')
+                    this.namespace = line.substring(namespacePos, line.length).replace("{", "");
                 }
-                block.add(line.trim() + System.lineSeparator())
-            } else if (startDocComment) {
-                val parsedBlock = ParsedBlockData(block, line.trim())
-                createTree(line, parents)
-                commentBlocks.add(parsedBlock)
-                block = ArrayList()
-                startDocComment = false
+
+                if (bracketsClosed) {
+                    // Подсчет всех скобок
+                    while (openBracketPos >= 0 && closeBracketPos >= 0) {
+                        openBracketPos = line.indexOf("{", openBracketPos + 1);
+                        closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+
+                        when {
+                            closeBracketPos != -1 -> {
+                                changeBracketCount('-')
+                            }
+                            openBracketPos != -1 -> {
+                                changeBracketCount('+');
+                            }
+                        }
+                    }
+
+                    // Поиск объявления класса,интерфейса ...
+                    for (header in HeaderType.values()) {
+                        val headerIndex = line.indexOf(header.toString());
+                        if (headerIndex in (openBracketPos + 1) until closeBracketPos) {
+                            headerString = line.substring(headerIndex, line.length).replace(Regex("[{,}]"), "")
+                        }
+                    }
+
+                }
+
+                // Поиск Комментариев
+                if (line.indexOf("///") != -1 || line.indexOf("/**") != -1 || line.indexOf("*") != -1) {
+                    if (!startDocComment) {
+                        startDocComment = true
+                    }
+                    block.add(line.trim() + System.lineSeparator())
+                } else if (startDocComment) {
+                    if(headerString == null){
+                        headerString = line.trim();
+                    }
+                    val parsedBlock = ParsedBlockData(block, headerString)
+                    createTree(line, parents)
+                    commentBlocks.add(parsedBlock)
+                    block = ArrayList()
+                    startDocComment = false
+                }
             }
         } while (line != null)
-
         return commentBlocks
     }
 

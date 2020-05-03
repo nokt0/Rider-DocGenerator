@@ -27,8 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2f920736-80d6-4c47-94f9-6aa7c2d54b20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/parser/sourceCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/parser/sourceCode.cs" afterDir="false" />
+=======
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,8 +307,14 @@
       <workItem from="1587550868876" duration="84000" />
       <workItem from="1587721001818" duration="1448000" />
       <workItem from="1588186727514" duration="5849000" />
+<<<<<<< Updated upstream
       <workItem from="1588197478443" duration="7665000" />
       <workItem from="1588241407983" duration="2958000" />
+=======
+      <workItem from="1588197478443" duration="5531000" />
+      <workItem from="1588237702441" duration="275000" />
+      <workItem from="1588238011681" duration="936000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -358,9 +367,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="399" y="156" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1588236413397" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1587139902084">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1588238214140">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
+<<<<<<< Updated upstream
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587139902084" />
     <state width="1398" height="285" key="GridCell.Tab.0.bottom" timestamp="1588272568938">
       <screen x="0" y="23" width="1440" height="829" />
@@ -412,9 +422,57 @@
     <state x="221" y="76" key="IDE.errors.dialog/0.0.1280.680@0.0.1280.680" timestamp="1587040632387" />
     <state x="249" y="116" key="IDE.errors.dialog/0.23.1440.829@0.23.1440.829" timestamp="1588271937414" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1587135131255">
+=======
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588238214140" />
+    <state width="1237" height="291" key="GridCell.Tab.0.bottom" timestamp="1588238949823">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587135131255" />
+    <state width="1237" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588238949823" />
+    <state width="1398" height="304" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588236680132" />
+    <state width="1237" height="291" key="GridCell.Tab.0.center" timestamp="1588238949823">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588238949823" />
+    <state width="1398" height="304" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1588236680131" />
+    <state width="1237" height="291" key="GridCell.Tab.0.left" timestamp="1588238949823">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588238949823" />
+    <state width="1398" height="304" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1588236680130" />
+    <state width="1237" height="291" key="GridCell.Tab.0.right" timestamp="1588238949823">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588238949823" />
+    <state width="1398" height="304" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1588236680208" />
+    <state width="1237" height="291" key="GridCell.Tab.1.bottom" timestamp="1588238949824">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588238949824" />
+    <state width="1398" height="304" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1588236680133" />
+    <state width="1237" height="291" key="GridCell.Tab.1.center" timestamp="1588238949824">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1588238949824" />
+    <state width="1398" height="304" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1588236680133" />
+    <state width="1237" height="291" key="GridCell.Tab.1.left" timestamp="1588238949824">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1588238949824" />
+    <state width="1398" height="304" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1588236680132" />
+    <state width="1237" height="291" key="GridCell.Tab.1.right" timestamp="1588238949824">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="291" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1588238949824" />
+    <state width="1398" height="304" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1588236680133" />
+    <state x="221" y="76" key="IDE.errors.dialog" timestamp="1587040632387">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="221" y="76" key="IDE.errors.dialog/0.0.1280.680@0.0.1280.680" timestamp="1587040632387" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1588238234309">
+>>>>>>> Stashed changes
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588238234309" />
     <state width="720" height="450" key="XDebugger.FullValuePopup" timestamp="1587328392947">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -449,8 +507,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt</url>
+<<<<<<< Updated upstream
           <line>71</line>
           <option name="timeStamp" value="13" />
+=======
+          <line>63</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/org/bois/parser/CommentToTagsParser.kt</url>
+          <line>69</line>
+          <option name="timeStamp" value="7" />
+>>>>>>> Stashed changes
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
