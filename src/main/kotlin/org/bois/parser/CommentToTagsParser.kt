@@ -9,7 +9,6 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     var tree: InheritTree = InheritTree()
     var namespace: String? = null
 
-
     fun createTree(line: String, parents: ArrayList<String>) {
         var className: String? = null
         if (line.indexOf("class") != -1) {
@@ -42,6 +41,17 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                     }
                 }
             }
+        }
+    }
+
+    fun printTree() {
+        println("(((Parents hashMap)))")
+        tree.parents.forEach {
+            println("Child: " + it.key + " Parents: " + it.value.toString())
+        }
+        println("(((Children hashMap)))")
+        tree.children.forEach {
+            println("Parent: " + it.key + " Children: " + it.value.toString())
         }
     }
 
@@ -128,17 +138,9 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                         for (header in HeaderType.values()) {
                             val headerIndex = Regex("""\s*${header.toString()}\s*""").containsMatchIn(line)
                             if (headerIndex) {
-                                headerString = line.replace(Regex("[{,}]"), "")
-                                headerType = header;
-                                val nameExp = Regex(""".*\s.*\s[:,{]""")
-                                var name = nameExp.find(headerString)?.value ?: ""
-                                var splittedName = name.split("[\\s:{]".toRegex()).filter { str -> !str.isEmpty() }
-                                when {
-                                    splittedName.size == 1 -> recentHeaderName = splittedName[0]
-                                    splittedName.size == 0 -> {
-                                    }
-                                    else -> recentHeaderName = splittedName[splittedName.size - 1]
-                                }
+                                headerString = line
+                                headerType = header
+                                recentHeaderName = cutNameFromHeader(headerString,header.toString())
                                 break;
                             }
                         }
@@ -158,7 +160,7 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                                     arrlist.add(parsedBlock)
                                     commentBlocks[recentHeaderName] = arrlist
                                 }
-                            }else{
+                            } else {
                                 mapElement.add(parsedBlock)
                             }
                             block = ArrayList()
@@ -172,19 +174,17 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         return commentBlocks
     }
 
-    fun treePrint() {
-        println("(((Parents hashMap)))")
-        tree.parents.forEach {
-            println("Child: " + it.key + " Parents: " + it.value.toString())
+    fun cutNameFromHeader(header: String,headerType: String): String {
+        val nameExp = Regex("""${headerType}\s*.*[:{$]?""")
+        val name = nameExp.find(header)?.value ?: ""
+        val splittedName = name.split("[\\s:{]".toRegex()).filter { str -> str.isNotEmpty() }
+        val resultName : String;
+        resultName = when (splittedName.size) {
+            1 -> splittedName[0]
+            0 -> ""
+            else -> splittedName[splittedName.size - 1]
         }
-        println("(((Children hashMap)))")
-        tree.children.forEach {
-            println("Parent: " + it.key + " Children: " + it.value.toString())
-        }
-    }
-
-    fun cutNameFromHeader(header: String) {
-
+        return resultName;
     }
 
 //    fun createTree(inputReader: BufferedReader) {
