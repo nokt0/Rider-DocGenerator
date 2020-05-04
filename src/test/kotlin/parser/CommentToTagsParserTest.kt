@@ -5,7 +5,6 @@ import org.junit.Test
 import java.io.BufferedReader
 import java.io.FileReader
 import java.lang.StringBuffer
-import java.nio.file.Paths
 
 internal class CommentToTagsParserTest {
     @Test
@@ -27,7 +26,7 @@ internal class CommentToTagsParserTest {
         val result = parser.createBlocks()
         println(result)
         println()
-        parser.treePrint()
+        parser.printTree()
     }
 
 }
