@@ -47,7 +47,7 @@ class CommentToTagsParser(inputReader: BufferedReader) {
     }
 
     fun createBlocks(): ArrayList<ParsedBlockData> {
-        var startDocComment = false
+        var startedDocComment = false
         val commentBlocks = ArrayList<ParsedBlockData>()
         var block = ArrayList<String>();
         var headerType: HeaderType? = null;
@@ -63,74 +63,85 @@ class CommentToTagsParser(inputReader: BufferedReader) {
                 '+' -> bracketsCount++;
                 '-' -> bracketsCount--;
             }
-
             if (bracketsCount == 0) {
                 bracketsClosed = true;
             }
         }
 
-
-        do {
+        loop@ do {
             val line = reader.readLine()
             val parents = ArrayList<String>()
             var headerString: String? = null;
 
-            if (line != null) {
-                val isNamespace = Regex("""\bnamespace\b""").matches(line)
-                var openBracketPos = line.indexOf("{");
-                var closeBracketPos = line.lastIndexOf("}");
+            if (line == null) { continue }
 
-                // Если в строке содержится namespace записываем его название
-                // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
-                if (isNamespace) {
-                    changeBracketCount('-')
-                    this.namespace = line.substring(0, line.length).replace("{", "").replace(Regex("""\bnamespace\b"""), "");
+            val isNamespace = Regex("""\bnamespace\b""").matches(line)
+            var openBracketPos = line.indexOf("{");
+            var closeBracketPos = line.lastIndexOf("}");
+
+            // Если в строке содержится namespace записываем его название
+            // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
+            if (isNamespace) {
+                changeBracketCount('-')
+                this.namespace =
+                    line.substring(0, line.length).replace("{", "").replace(Regex("""\bnamespace\b"""), "");
+            }
+
+            // Подсчет всех скобок
+            while (openBracketPos >= 0 && closeBracketPos >= 0) {
+                openBracketPos = line.indexOf("{", openBracketPos + 1);
+                closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+                when {
+                    closeBracketPos != -1 -> {
+                        changeBracketCount('-')
+                    }
+                    openBracketPos != -1 -> {
+                        changeBracketCount('+');
+                    }
+                }
+            }
+
+            // Поиск Комментариев
+            when {
+                Regex("""\s*///\s*.*$""").matches(line) || Regex("""\s*/\*\*\s*.*$""").matches(line) -> {
+                    if (!startedDocComment) {
+                        startedDocComment = true
+                    }
+                    block.add(line.trim() + System.lineSeparator())
                 }
 
-                if (bracketsClosed) {
-                    // Подсчет всех скобок
-                    while (openBracketPos >= 0 && closeBracketPos >= 0) {
-                        openBracketPos = line.indexOf("{", openBracketPos + 1);
-                        closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+                //Если комментарий многострочный
+                Regex("""\s*\*\s*.*$""").matches(line) -> {
+                    block.add(line.trim() + System.lineSeparator())
+                }
 
-                        when {
-                            closeBracketPos != -1 -> {
-                                changeBracketCount('-')
-                            }
-                            openBracketPos != -1 -> {
-                                changeBracketCount('+');
-                            }
-                        }
-                    }
+                Regex("""\s*//\s*.*$""").matches(line) -> {
+                    continue@loop
+                }
 
-                    // Поиск объявления класса,интерфейса ...
+                else -> {
+                    // Поиск объявления класса,интерфейса,...
                     for (header in HeaderType.values()) {
                         val headerIndex = Regex("\b" + header.toString() + "\b").matches(line);
                         if (headerIndex) {
                             headerString = line.replace(Regex("[{,}]"), "")
                             headerType = header;
+                            break;
                         }
                     }
-
-                }
-
-                // Поиск Комментариев
-                if (line.indexOf("///") != -1 || line.indexOf("/**") != -1 || line.indexOf("*") != -1) {
-                    if (!startDocComment) {
-                        startDocComment = true
+                    if (startedDocComment) {
+                        if (headerString == null) {
+                            headerString = line.trim();
+                        }
+                        val parsedBlock = ParsedBlockData(block, headerString, this.namespace, headerType)
+                        createTree(line, parents)
+                        commentBlocks.add(parsedBlock)
+                        block = ArrayList()
+                        startedDocComment = false
                     }
-                    block.add(line.trim() + System.lineSeparator())
-                } else if (startDocComment) {
-                    if(headerString == null){
-                        headerString = line.trim();
-                    }
-                    val parsedBlock = ParsedBlockData(block, headerString, this.namespace,headerType)
-                    createTree(line, parents)
-                    commentBlocks.add(parsedBlock)
-                    block = ArrayList()
-                    startDocComment = false
                 }
             }
+
         } while (line != null)
         return commentBlocks
     }
@@ -246,10 +257,5 @@ class CommentToTagsParser(inputReader: BufferedReader) {
         if (comment.indexOf("<value>") != -1 && comment.lastIndexOf("<value>") != -1)
             tags.value =
                 comment.substring(comment.indexOf("<value>") + "<value>".length, comment.lastIndexOf("<value>"))
-    }
-
-    fun createBlocks(sourceCode: StringBuffer) {
-        val regex = Regex("///.*$");
-
     }
 }
