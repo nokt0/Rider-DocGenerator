@@ -2,29 +2,15 @@ package org.bois.parser
 
 public class BlocksParser {
     var namespace: String? = null
+    var bracketsCount = 0
+    var bracketsClosed = true
 
     fun createBlocks(input: List<String>): HashMap<String, ParsedClass> {
         var startedDocComment = false
         val commentBlocks = HashMap<String, ParsedClass>()
         var block = ArrayList<String>()
         var headerType: HeaderType? = null
-        var bracketsCount = 0
-        var bracketsClosed = true
         var recentHeaderName: String? = null
-
-        /** Функция считает скобки и определяет закрылась ли их последовательность
-         * Нам нужно это для того, чтобы точно знать что найденные строки "class,interface..."
-         * точно являются объявлением, а не просто словом в какой то строке.
-         */
-        fun changeBracketCount(operation: Char) {
-            when (operation) {
-                '+' -> bracketsCount++;
-                '-' -> bracketsCount--;
-            }
-            if (bracketsCount == 0) {
-                bracketsClosed = true;
-            }
-        }
 
         loop@ for (line in input) {
             val parents = ArrayList<String>()
@@ -34,9 +20,8 @@ public class BlocksParser {
                 continue
             }
 
+            calculateBrackets(line)
             val isNamespace = Regex("""\bnamespace\b""").matches(line)
-            var openBracketPos = line.indexOf("{");
-            var closeBracketPos = line.lastIndexOf("}");
 
             // Если в строке содержится namespace записываем его название
             // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
@@ -44,20 +29,6 @@ public class BlocksParser {
                 changeBracketCount('-')
                 this.namespace =
                     line.substring(0, line.length).replace("{", "").replace(Regex("""\bnamespace\b"""), "");
-            }
-
-            // Подсчет всех скобок
-            while (openBracketPos >= 0 && closeBracketPos >= 0) {
-                openBracketPos = line.indexOf("{", openBracketPos + 1);
-                closeBracketPos = line.indexOf("}", closeBracketPos + 1);
-                when {
-                    closeBracketPos != -1 -> {
-                        changeBracketCount('-')
-                    }
-                    openBracketPos != -1 -> {
-                        changeBracketCount('+');
-                    }
-                }
             }
 
             // Поиск Комментариев
@@ -119,6 +90,39 @@ public class BlocksParser {
 
         }
         return commentBlocks
+    }
+
+    fun calculateBrackets(line:String){
+        var openBracketPos = line.indexOf("{");
+        var closeBracketPos = line.lastIndexOf("}");
+        // Подсчет всех скобок
+        while (openBracketPos >= 0 && closeBracketPos >= 0) {
+            openBracketPos = line.indexOf("{", openBracketPos + 1);
+            closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+            when {
+                closeBracketPos != -1 -> {
+                    changeBracketCount('-')
+                }
+                openBracketPos != -1 -> {
+                    changeBracketCount('+');
+                }
+            }
+        }
+    }
+
+
+    /** Функция считает скобки и определяет закрылась ли их последовательность
+     * Нам нужно это для того, чтобы точно знать что найденные строки "class,interface..."
+     * точно являются объявлением, а не просто словом в какой то строке.
+     */
+    private fun changeBracketCount(operation: Char) {
+        when (operation) {
+            '+' -> bracketsCount++;
+            '-' -> bracketsCount--;
+        }
+        if (bracketsCount == 0) {
+            bracketsClosed = true;
+        }
     }
 
     private fun cutNameFromHeader(header: String, headerType: String): String {
