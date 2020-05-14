@@ -1,0 +1,82 @@
+interface TestInterface
+/// <summary>
+/// Documentation that describes the interface goes here.
+/// </summary>
+/// <remarks>
+/// Details about the interface go here.
+/// </remarks>
+
+int InterfaceMethod(int n);
+/// <summary>
+/// Documentation that describes the method goes here.
+/// </summary>
+/// <param name="n">
+/// Parameter n requires an integer argument.
+/// </param>
+/// <returns>
+/// The method returns an integer.
+/// </returns>
+
+public class TestClass : TestInterface, TestInterface1
+/// <summary>
+/// Class level summary documentation goes here.
+/// </summary>
+/// <remarks>
+/// Longer comments can be associated with a type or member through
+/// the remarks tag.
+/// </remarks>
+
+private string _name = null;
+/// <summary>
+/// Store for the Name property.
+/// </summary>
+
+public TestClass()
+/// <summary>
+/// The class constructor.
+/// </summary>
+
+public string Name
+/// <summary>
+/// Name property.
+/// </summary>
+/// <value>
+/// A value tag is used to describe the property value.
+/// </value>
+
+public void SomeMethod(string s)
+/// <summary>
+/// Description for SomeMethod.
+/// </summary>
+/// <param name="s"> Parameter description for s goes here.</param>
+/// <seealso cref="System.String">
+/// You can use the cref attribute on any tag to reference a type or member
+/// and the compiler will check that the reference exists.
+/// </seealso>
+
+public int SomeOtherMethod()
+/// <summary>
+/// Some other method.
+/// </summary>
+/// <returns>
+/// Return values are described through the returns tag.
+/// </returns>
+/// <seealso cref="SomeMethod(string)">
+/// Notice the use of the cref attribute to reference a specific method.
+/// </seealso>
+
+static int Main(System.String[] args)
+/// <summary>
+/// The entry point for the application.
+/// </summary>
+/// <param name="args"> A list of command line arguments.</param>
+
+public class TestClass1 : TestInterface, TestInterface1
+/// <summary>
+/// Class level summary documentation goes here.
+/// </summary>
+/// <remarks>
+/// Longer comments can be associated with a type or member through
+/// the remarks tag.
+/// </remarks>
+
