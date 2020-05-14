@@ -1,10 +1,12 @@
 package org.bois.parser
 
-class ParsedClass(val type: HeaderType, val namespace: String, val methods: List<ParsedBlockData>,val docComment : Tag ){
-    var parents : List <ParsedClass> =  ArrayList <ParsedClass>()
-    var children : List <ParsedClass> = ArrayList <ParsedClass>()
+class ParsedClass(val type: HeaderType?, val namespace: String?, val insideBlocks: ArrayList<ParsedBlockData>) {
 
-    fun createParentsAndChildren(tree: InheritTree){
+    var docs: ArrayList<String> = ArrayList()
+    var parents: List<ParsedClass> = ArrayList()
+    var children: List<ParsedClass> = ArrayList()
+
+    fun createParentsAndChildren(tree: InheritTree) {
 
     }
 }
