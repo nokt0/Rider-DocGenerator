@@ -10,10 +10,11 @@ class Parser {
     private val blocksParser = BlocksParser()
     private val treeParser = TreeParser()
 
-    fun parseFile(input : File){
+    fun parseFile(input: File) {
         val list: List<String> =
             Files.readAllLines(input.toPath(), Charset.defaultCharset())
-        val blocks= blocksParser.createBlocks(list)
+        blocksParser.createBlocks(list)
+        val blocks = blocksParser.blocksByNamespace()
         val tree = treeParser.createTree(list)
     }
 }
