@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="13">
-      <module name="Rider-DocGenerator.main" target="12" />
-      <module name="Rider-DocGenerator.test" target="12" />
-    </bytecodeTargetLevel>
-  </component>
-</project>

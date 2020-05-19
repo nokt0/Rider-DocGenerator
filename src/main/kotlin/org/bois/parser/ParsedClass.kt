@@ -1,6 +1,6 @@
 package org.bois.parser
 
-class ParsedClass(val type: HeaderType?, val namespace: String?, val insideBlocks: ArrayList<ParsedBlockData>) {
+class ParsedClass(val name:String, val type: HeaderType?, val namespace: String?, val insideBlocks: ArrayList<ParsedBlockData>) {
 
     var docs: ArrayList<String> = ArrayList()
     var parents: List<ParsedClass> = ArrayList()

@@ -1,3 +1,7 @@
 /build
 /out/
 /lib
+/.gradle
+/.idea
+gradlew.bat
+gradlew
