@@ -49,9 +49,9 @@ class BlocksParserTest {
 
         for ((key, value) in result) {
             for (item in value.insideBlocks) {
-                var testStr = item.toString()
+                val testStr = item.toString()
                 if (!expected.contains(testStr)) {
-                    assert(false);
+                    assert(false)
                 }
             }
         }
@@ -74,7 +74,7 @@ class BlocksParserTest {
         val result = blocksParser.blocksByNamespace()
         val generator = IndexPageCreator()
         generator.create(result)
-        var writter = BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\index.html"))
+        val writter = BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\index.html"))
         writter.write(generator.htmlPage())
         writter.close()
     }

@@ -1,6 +1,6 @@
 package org.bois.parser
 
-public class TagsStruct {
+class TagsStruct {
     var c: String? = null
     var code: String? = null
     var example: String? = null

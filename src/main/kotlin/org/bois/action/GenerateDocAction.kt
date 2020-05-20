@@ -9,7 +9,7 @@ import com.intellij.ui.tree.Navigatable
 import org.jetbrains.annotations.NotNull
 
 
-public class GenerateDocAction : AnAction() {
+class GenerateDocAction : AnAction() {
     override fun update(e: AnActionEvent) {
         // Using the event, evaluate the context, and enable or disable the action.
     }
@@ -18,9 +18,9 @@ public class GenerateDocAction : AnAction() {
         // Using the event, create and show a dialog
 
         // Using the event, create and show a dialog
-        val currentProject: Project? = event.getProject()
-        val dlgMsg = StringBuffer(event.getPresentation().getText().toString() + " Selected!")
-        val dlgTitle: String = event.getPresentation().getDescription()
+        val currentProject: Project? = event.project
+        val dlgMsg = StringBuffer(event.presentation.text.toString() + " Selected!")
+        val dlgTitle: String = event.presentation.description
         // If an element is selected in the editor, add info about it.
         // If an element is selected in the editor, add info about it.
         val nav: com.intellij.pom.Navigatable? = event.getData(CommonDataKeys.NAVIGATABLE)

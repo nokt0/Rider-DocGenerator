@@ -41,6 +41,6 @@ class TreeParser {
                 }
             }
         }
-        return tree;
+        return tree
     }
 }
