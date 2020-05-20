@@ -73,5 +73,6 @@ class BlocksParserTest {
         val list: List<String> =
             Files.readAllLines(input.toPath(), Charset.defaultCharset())
         val result = blocksParser.createBlocks(list);
+        println(result)
     }
 }

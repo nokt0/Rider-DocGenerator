@@ -1,6 +1,6 @@
 package org.bois.parser
 
-public class TagsStruct {
+class TagsStruct {
     var c: String? = null
     var code: String? = null
     var example: String? = null
@@ -11,6 +11,7 @@ public class TagsStruct {
     var param: String? = null
     var paramref: String? = null
     var permission: String? = null
+    var remarks: String? = null
     var inheritdoc: String? = null
     var see: String? = null
     var seealso: String? = null
@@ -31,6 +32,7 @@ public class TagsStruct {
                 "<param>\t[$param]\n" +
                 "<paramref>\t[$paramref]\n" +
                 "<permission>\t[$permission]\n" +
+                "<remarks>\t[$remarks]\n" +
                 "<inheritdoc>\t[$inheritdoc]\n" +
                 "<see>\t[$see]\n" +
                 "<seealso>\t[$seealso]\n" +
@@ -39,7 +41,5 @@ public class TagsStruct {
                 "<typeparamref>\t[$typeparamref]\n" +
                 "<returns>\t[$returns]\n" +
                 "<value>\t[$value]"
-
-
     }
 }
