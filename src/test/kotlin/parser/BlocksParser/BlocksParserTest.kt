@@ -4,6 +4,7 @@ import org.bois.parser.BlocksParser
 import org.junit.Test
 import com.google.gson.*
 import org.bois.htmlGenerator.IndexPageCreator
+import org.bois.htmlGenerator.NamespacePageCreator
 import java.io.*
 import java.nio.charset.Charset
 import java.nio.file.Files
@@ -72,9 +73,12 @@ class BlocksParserTest {
             Files.readAllLines(input.toPath(), Charset.defaultCharset())
         blocksParser.createBlocks(list)
         val result = blocksParser.blocksByNamespace()
-        val generator = IndexPageCreator()
-        generator.create(result)
-        val writter = BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\index.html"))
+        val generator = NamespacePageCreator("namespace1")
+
+        result["test"]?.let { generator.create(it) }
+
+        val writter =
+            BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\namespace.html"))
         writter.write(generator.htmlPage())
         writter.close()
     }

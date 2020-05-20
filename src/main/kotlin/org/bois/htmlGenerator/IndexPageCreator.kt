@@ -6,17 +6,7 @@ import org.jsoup.nodes.Document
 import java.io.File
 
 
-class IndexPageCreator {
-
-    private val page: Document
-    private var counter = 1
-    private val deleteId = "template-stub"
-
-    init {
-        val htmlTemplate = File("src/main/resources/html_templates/index/index.html").readText(Charsets.UTF_8)
-        val doc = Jsoup.parse(htmlTemplate)
-        page = doc
-    }
+class IndexPageCreator : AbstractPageCreator("src/main/resources/html_templates/index/index.html") {
 
     fun create(parsedClasses: HashMap<String, ArrayList<ParsedClass>>) {
         for ((key, value) in parsedClasses) {
@@ -24,18 +14,6 @@ class IndexPageCreator {
             addNamespace(key,description)
         }
         deleteTemplateThrash()
-    }
-
-    fun htmlPage(): String {
-        return page.toString()
-    }
-
-    private fun createNameDescription(parsedClasses: ArrayList<ParsedClass>): ArrayList<Pair<String, String>> {
-        val classDescription = ArrayList<Pair<String, String>>()
-        for (item in parsedClasses) {
-            classDescription.add(Pair(item.name, item.docs.toString()))
-        }
-        return classDescription
     }
 
     private fun addNamespace(namespaceName: String, nameDescription: ArrayList<Pair<String, String>>) {
@@ -85,14 +63,5 @@ class IndexPageCreator {
 
         counter++
         return fragment
-    }
-
-    private fun deleteTemplateThrash(){
-        val body = page.body()
-        val toDelete = body.select("#$deleteId")
-        for(item in toDelete){
-            item.remove()
-        }
-
     }
 }
