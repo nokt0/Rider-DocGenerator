@@ -1,4 +1,3 @@
 package org.bois.htmlGenerator
 
-class ClassPageCreator {
-}
+class ClassPageCreator

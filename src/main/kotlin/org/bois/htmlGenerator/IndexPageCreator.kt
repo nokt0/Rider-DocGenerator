@@ -10,6 +10,7 @@ class IndexPageCreator {
 
     private val page: Document
     private var counter = 1
+    private val deleteId = "template-stub"
 
     init {
         val htmlTemplate = File("src/main/resources/html_templates/index/index.html").readText(Charsets.UTF_8)
@@ -21,8 +22,8 @@ class IndexPageCreator {
         for ((key, value) in parsedClasses) {
             val description = createNameDescription(value)
             addNamespace(key,description)
-
         }
+        deleteTemplateThrash()
     }
 
     fun htmlPage(): String {
@@ -37,7 +38,7 @@ class IndexPageCreator {
         return classDescription
     }
 
-    fun addNamespace(namespaceName: String, nameDescription: ArrayList<Pair<String, String>>) {
+    private fun addNamespace(namespaceName: String, nameDescription: ArrayList<Pair<String, String>>) {
         val body = page.body()
         val table = body.getElementById("namespaces-table")
         val firstChild = table.child(0)
@@ -51,7 +52,7 @@ class IndexPageCreator {
                 "</tr>"
     }
 
-    fun createNamespaceFragment(namespaceName: String, nameDescription: List<Pair<String, String>>): String {
+    private fun createNamespaceFragment(namespaceName: String, nameDescription: List<Pair<String, String>>): String {
         var classes = ""
 
         for ((className, description) in nameDescription) {
@@ -84,5 +85,14 @@ class IndexPageCreator {
 
         counter++
         return fragment
+    }
+
+    private fun deleteTemplateThrash(){
+        val body = page.body()
+        val toDelete = body.select("#$deleteId")
+        for(item in toDelete){
+            item.remove()
+        }
+
     }
 }

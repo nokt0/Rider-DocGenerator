@@ -1,6 +1,6 @@
 package org.bois.parser
 
-public class BlocksParser {
+class BlocksParser {
     var namespace: String? = null
     var bracketsCount = 0
     var bracketsClosed = true
@@ -14,7 +14,7 @@ public class BlocksParser {
 
         loop@ for (line in input) {
             val parents = ArrayList<String>()
-            var headerString: String? = null;
+            var headerString: String? = null
 
             if (line != null) {
                 calculateBrackets(line)
@@ -25,7 +25,7 @@ public class BlocksParser {
                 if (isNamespace) {
                     changeBracketCount('-')
                     this.namespace =
-                        line.substring(0, line.length).replace("{", "").replace(Regex("""\s*namespace\s+"""), "");
+                        line.substring(0, line.length).replace("{", "").replace(Regex("""\s*namespace\s+"""), "")
                 }
 
                 // Поиск Комментариев
@@ -51,18 +51,18 @@ public class BlocksParser {
                         // Поиск объявления класса,интерфейса,...
                         if (bracketsClosed) {
                             for (header in HeaderType.values()) {
-                                val headerIndex = Regex("""\s*${header.toString()}\s*""").containsMatchIn(line)
+                                val headerIndex = Regex("""\s*$header\s*""").containsMatchIn(line)
                                 if (headerIndex) {
                                     headerString = line
                                     headerType = header
                                     recentHeaderName = cutNameFromHeader(headerString, header.toString())
-                                    break;
+                                    break
                                 }
                             }
 
                             if (startedDocComment) {
                                 if (headerString == null) {
-                                    headerString = line.trim();
+                                    headerString = line.trim()
                                 }
                                 val parsedBlock =
                                     ParsedBlockData(block, headerString, recentHeaderName, this.namespace, headerType)
@@ -107,18 +107,18 @@ public class BlocksParser {
     }
 
     fun calculateBrackets(line: String) {
-        var openBracketPos = line.indexOf("{");
-        var closeBracketPos = line.lastIndexOf("}");
+        var openBracketPos = line.indexOf("{")
+        var closeBracketPos = line.lastIndexOf("}")
         // Подсчет всех скобок
         while (openBracketPos >= 0 && closeBracketPos >= 0) {
-            openBracketPos = line.indexOf("{", openBracketPos + 1);
-            closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+            openBracketPos = line.indexOf("{", openBracketPos + 1)
+            closeBracketPos = line.indexOf("}", closeBracketPos + 1)
             when {
                 closeBracketPos != -1 -> {
                     changeBracketCount('-')
                 }
                 openBracketPos != -1 -> {
-                    changeBracketCount('+');
+                    changeBracketCount('+')
                 }
             }
         }
@@ -131,11 +131,11 @@ public class BlocksParser {
      */
     private fun changeBracketCount(operation: Char) {
         when (operation) {
-            '+' -> bracketsCount++;
-            '-' -> bracketsCount--;
+            '+' -> bracketsCount++
+            '-' -> bracketsCount--
         }
         if (bracketsCount == 0) {
-            bracketsClosed = true;
+            bracketsClosed = true
         }
     }
 
@@ -143,12 +143,12 @@ public class BlocksParser {
         val nameExp = Regex("""${headerType}\s*.*[:{$]?""")
         val name = nameExp.find(header)?.value ?: ""
         val splittedName = name.split("[\\s:{]".toRegex()).filter { str -> str.isNotEmpty() }
-        val resultName: String;
+        val resultName: String
         resultName = when (splittedName.size) {
             0 -> ""
             else -> splittedName[1]
         }
-        return resultName;
+        return resultName
     }
 
 }
