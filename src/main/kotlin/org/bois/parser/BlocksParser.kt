@@ -81,6 +81,7 @@ public class BlocksParser {
                             } else {
                                 mapElement.insideBlocks.add(parsedBlock)
                             }
+                            println(Trimmer.trimLine(block))
                             block = ArrayList()
                             startedDocComment = false
                         }
