@@ -1,3 +1,10 @@
 package org.bois.htmlGenerator
 
-class HtmlDocGenerator
+import org.bois.parser.ParsedClass
+import java.io.File
+
+class HtmlDocGenerator {
+    fun createDocumentation(parsedClasses: HashMap<String, List<ParsedClass>>) {
+
+    }
+}
