@@ -1,5 +1,7 @@
 package org.bois.parser
 
+import com.intellij.internal.statistic.utils.addPluginInfoTo
+
 class Trimmer {
     companion object {
         fun trimLine(doc: ArrayList<String>): TagsStruct {
@@ -9,50 +11,83 @@ class Trimmer {
                 println(it)
                 when {
                     Regex(""".*<c>.\n*""").matches(it) ->
-                        tagsStruct.c = it.substring(it.indexOf("<c>") + 3, it.indexOf("</c>"))
+                        tagsStruct.c = splitForParameters(it)
                     Regex(""".*<code>.\n*""").matches(it) ->
-                        tagsStruct.code = it.substring(it.indexOf("<code>") + 6, it.indexOf("</code>"))
+                        tagsStruct.code = splitForParameters(it)
                     Regex(""".*<example>.*\n""").matches(it) ->
-                        tagsStruct.example =
-                            it.substring(it.indexOf("<example>") + 9, it.indexOf("</example>"))
+                        tagsStruct.example = splitForParameters(it)
                     Regex(""".*<exception.*>.*\n""").matches(it) ->
-                        tagsStruct.exception =
-                            it.substring(it.indexOf("<exception") + 11, it.indexOf("</excpetion>"))
+                        tagsStruct.exception = splitForParameters(it)
                     Regex(""".*<include.*/>.*\n""").matches(it) ->
-                        tagsStruct.include =
-                            it.substring(it.indexOf("<include") + 8, it.indexOf("/>"))
+                        tagsStruct.include = splitForParameters(it)
                     Regex(""".*<list.*>.*\n""").matches(it) ->
-                        tagsStruct.list = it.substring(it.indexOf("<list") + 6, it.indexOf("</list>"))
+                        tagsStruct.list = splitForParameters(it)
                     Regex(""".*<para>.*\n""").matches(it) ->
-                        tagsStruct.para = it.substring(it.indexOf("<para>") + 6, it.indexOf("</para>"))
+                        tagsStruct.para = splitForParameters(it)
                     Regex(""".*<param.*>.*\n""").matches(it) ->
-                        tagsStruct.param = it.substring(it.indexOf("<param") + 7, it.indexOf("</param>"))
+                        tagsStruct.param = splitForParameters(it)
                     Regex(""".*<paramref.*/>.*\n""").matches(it) ->
-                        tagsStruct.paramref = it.substring(it.indexOf("<paramref") + 9, it.indexOf("/>"))
+                        tagsStruct.paramref = splitForParameters(it)
                     Regex(""".*<permission.*>.*\n""").matches(it) ->
-                        tagsStruct.permission =
-                            it.substring(it.indexOf("<permission") + 12, it.indexOf("</permission>"))
+                        tagsStruct.permission = splitForParameters(it)
                     Regex(""".*<remarks>.*\n""").matches(it) ->
-                        tagsStruct.remarks = it.substring(it.indexOf("<remarks>") + 9, it.indexOf("</remarks>"))
+                        tagsStruct.remarks = splitForParameters(it)
                     Regex(""".*<returns>.*\n""").matches(it) ->
-                        tagsStruct.returns = it.substring(it.indexOf("<returns>") + 9, it.indexOf("</returns>"))
+                        tagsStruct.returns = splitForParameters(it)
                     Regex(""".*<inheritdoc.*/>.*\n""").matches(it) ->
-                        tagsStruct.inheritdoc = it.substring(it.indexOf("<inheritdoc") + 11, it.indexOf("/>"))
+                        tagsStruct.inheritdoc = splitForParameters(it)
                     Regex(""".*<see.*/>.*\n""").matches(it) ->
-                        tagsStruct.see = it.substring(it.indexOf("<see") + 4, it.indexOf("/>"))
+                        tagsStruct.see = splitForParameters(it)
                     Regex(""".*<seealso.*>.*\n""").matches(it) ->
-                        tagsStruct.seealso = it.substring(it.indexOf("<seealso") + 8, it.indexOf("</seealso>"))
+                        tagsStruct.seealso = splitForParameters(it)
                     Regex(""".*<summary>.*\n""").matches(it) ->
-                        tagsStruct.summary = it.substring(it.indexOf("<summary>") + 9, it.indexOf("</summary>"))
+                        tagsStruct.summary = splitForParameters(it)
                     Regex(""".*<typeparam.*>.*\n""").matches(it) ->
-                        tagsStruct.typeparam = it.substring(it.indexOf("<typeparam") + 11, it.indexOf("</typeparam>"))
+                        tagsStruct.typeparam = splitForParameters(it)
                     Regex(""".*<typeparamref.*/>.*\n""").matches(it) ->
-                        tagsStruct.typeparamref = it.substring(it.indexOf("<typeparamref") + 11, it.indexOf("/>"))
+                        tagsStruct.typeparamref = splitForParameters(it)
                     Regex(""".*<value>.*\n""").matches(it) ->
-                        tagsStruct.value = it.substring(it.indexOf("<value>") + 7, it.indexOf("</value>"))
+                        tagsStruct.value = splitForParameters(it)
                 }
             }
             return tagsStruct
+        }
+
+        fun splitForParameters(line: String): Tag {
+            var result = Tag()
+            if (line.indexOf(">") < line.lastIndexOf("<"))
+                result.content = line.substring(line.indexOf(">") + 1, line.lastIndexOf("<") - 1).trim()
+
+            when {
+                Regex(""".*cref=.*\n""").matches(line) -> {
+                    result.cref =
+                        line.substring(line.indexOf("cref=")+0)
+                            .substring(line.indexOf("\"") + 1)
+                            .substring(0, line.indexOf("\"") - 1)
+                }
+
+                Regex(""".*.name=*\n""").matches(line) -> {
+                    result.name =
+                        line.substring(line.indexOf("name=") + 5)
+                            .substring(line.indexOf("\"") + 1)
+                            .substring(0, line.indexOf("\"") - 1)
+                }
+
+                Regex(""".*file=.*\n""").matches(line) -> {
+                    result.file = line.substring(line.indexOf("file=") + 5)
+                        .substring(line.indexOf("\'") + 1)
+                        .substring(0, line.indexOf("\'") - 1)
+                }
+
+                Regex(""".*path=.*\n""").matches(line) -> {
+                    result.path = line.substring(line.indexOf("path=") + 5)
+                        .substring(line.indexOf("\'") + 1)
+                        .substring(0, line.indexOf("\'") - 1)
+                }
+
+            }
+
+            return result
         }
     }
 }
