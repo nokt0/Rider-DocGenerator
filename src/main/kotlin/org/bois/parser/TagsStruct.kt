@@ -1,25 +1,25 @@
 package org.bois.parser
 
 class TagsStruct {
-    var c: String? = null
-    var code: String? = null
-    var example: String? = null
-    var exception: String? = null
-    var include: String? = null
-    var list: String? = null
-    var para: String? = null
-    var param: String? = null
-    var paramref: String? = null
-    var permission: String? = null
-    var remarks: String? = null
-    var inheritdoc: String? = null
-    var see: String? = null
-    var seealso: String? = null
-    var summary: String? = null
-    var typeparam: String? = null
-    var typeparamref: String? = null
-    var returns: String? = null
-    var value: String? = null
+    var c: Tag = Tag()
+    var code: Tag = Tag()
+    var example: Tag = Tag()
+    var exception: Tag = Tag()
+    var include: Tag = Tag()
+    var list: Tag = Tag()
+    var para: Tag = Tag()
+    var param: Tag = Tag()
+    var paramref: Tag = Tag()
+    var permission: Tag = Tag()
+    var remarks: Tag = Tag()
+    var inheritdoc: Tag = Tag()
+    var see: Tag = Tag()
+    var seealso: Tag = Tag()
+    var summary: Tag = Tag()
+    var typeparam: Tag = Tag()
+    var typeparamref: Tag = Tag()
+    var returns: Tag = Tag()
+    var value: Tag = Tag()
 
     override fun toString(): String {
         return "<c>\t[$c]\n" +

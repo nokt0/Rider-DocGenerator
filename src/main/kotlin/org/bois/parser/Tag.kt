@@ -1,9 +1,19 @@
 package org.bois.parser
 
-class Tag(name: String, var type: TagType) {
-    var text: String? = null
-    var innerTags: ArrayList<Tag> = ArrayList<Tag>()
-    var properties: HashMap<String, String> = HashMap<String, String>()
-    var begin: String = "<$name>"
-    var enclosing: String = "</$name>"
+class Tag {
+    var content: String? = null
+    var cref: String? = null
+    var file: String? = null
+    var path: String? = null
+    var type: String? = null
+    var name: String? = null
+
+    override fun toString(): String {
+        return "content: [$content]\n" +
+                "cref: [$cref]\n" +
+                "file: [$file]\n" +
+                "path: [$path]\n" +
+                "type: [$type]\n" +
+                "name: [$name]\n"
+    }
 }
