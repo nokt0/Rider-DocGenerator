@@ -1,10 +1,10 @@
 package org.bois.parser
 
-public class BlocksParser {
+class BlocksParser {
     var namespace: String? = null
     var bracketsCount = 0
     var bracketsClosed = true
-
+    var blocksBuffer: HashMap<String, ParsedClass> = HashMap()
     fun createBlocks(input: List<String>): HashMap<String, ParsedClass> {
         var startedDocComment = false
         val commentBlocks = HashMap<String, ParsedClass>()
@@ -14,97 +14,111 @@ public class BlocksParser {
 
         loop@ for (line in input) {
             val parents = ArrayList<String>()
-            var headerString: String? = null;
+            var headerString: String? = null
 
-            if (line == null) {
-                continue
-            }
+            if (line != null) {
+                calculateBrackets(line)
+                val isNamespace = Regex("""\s*namespace\s+.*$""").matches(line)
 
-            calculateBrackets(line)
-            val isNamespace = Regex("""\bnamespace\b""").matches(line)
-
-            // Если в строке содержится namespace записываем его название
-            // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
-            if (isNamespace) {
-                changeBracketCount('-')
-                this.namespace =
-                    line.substring(0, line.length).replace("{", "").replace(Regex("""\bnamespace\b"""), "");
-            }
-
-            // Поиск Комментариев
-            when {
-                Regex("""\s*///\s*.*$""").matches(line) || Regex("""\s*/\*\*\s*.*$""").matches(line) -> {
-                    if (!startedDocComment) {
-                        startedDocComment = true
-                    }
-                    block.add(line.trim() + System.lineSeparator())
+                // Если в строке содержится namespace записываем его название
+                // скобки после namespace не должны учитываться в подсчете открывающих и закрывающих скобок
+                if (isNamespace) {
+                    changeBracketCount('-')
+                    this.namespace =
+                        line.substring(0, line.length).replace("{", "").replace(Regex("""\s*namespace\s+"""), "")
                 }
 
-                //Если комментарий многострочный
-                Regex("""\s*\*\s*.*$""").matches(line) -> {
-                    block.add(line.trim() + System.lineSeparator())
-                }
-
-                //Если обычный комментарий
-                Regex("""\s*//\s*.*$""").matches(line) -> {
-                    continue@loop
-                }
-
-                else -> {
-                    // Поиск объявления класса,интерфейса,...
-                    if (bracketsClosed) {
-                        for (header in HeaderType.values()) {
-                            val headerIndex = Regex("""\s*${header.toString()}\s*""").containsMatchIn(line)
-                            if (headerIndex) {
-                                headerString = line
-                                headerType = header
-                                recentHeaderName = cutNameFromHeader(headerString, header.toString())
-                                break;
-                            }
+                // Поиск Комментариев
+                when {
+                    Regex("""\s*///\s*.*$""").matches(line) || Regex("""\s*/\*\*\s*.*$""").matches(line) -> {
+                        if (!startedDocComment) {
+                            startedDocComment = true
                         }
+                        block.add(line.trim() + System.lineSeparator())
+                    }
 
-                        if (startedDocComment) {
-                            if (headerString == null) {
-                                headerString = line.trim();
-                            }
-                            val parsedBlock =
-                                ParsedBlockData(block, headerString, recentHeaderName, this.namespace, headerType)
+                    //Если комментарий многострочный
+                    Regex("""\s*\*\s*.*$""").matches(line) -> {
+                        block.add(line.trim() + System.lineSeparator())
+                    }
 
-                            val mapElement = commentBlocks[recentHeaderName]
-                            if (mapElement == null) {
-                                if (recentHeaderName != null) {
-                                    val initList = ArrayList<ParsedBlockData>()
-                                    val parsedClass = ParsedClass(headerType, namespace, initList)
-                                    parsedClass.docs = parsedBlock.docs
-                                    commentBlocks[recentHeaderName] = parsedClass
+                    //Если обычный комментарий
+                    Regex("""\s*//\s*.*$""").matches(line) -> {
+                        continue@loop
+                    }
+
+                    else -> {
+                        // Поиск объявления класса,интерфейса,...
+                        if (bracketsClosed) {
+                            for (header in HeaderType.values()) {
+                                val headerIndex = Regex("""\s*$header\s*""").containsMatchIn(line)
+                                if (headerIndex) {
+                                    headerString = line
+                                    headerType = header
+                                    recentHeaderName = cutNameFromHeader(headerString, header.toString())
+                                    break
                                 }
-                            } else {
-                                mapElement.insideBlocks.add(parsedBlock)
                             }
-                            block = ArrayList()
-                            startedDocComment = false
+
+                            if (startedDocComment) {
+                                if (headerString == null) {
+                                    headerString = line.trim()
+                                }
+                                val parsedBlock =
+                                    ParsedBlockData(block, headerString, recentHeaderName, this.namespace, headerType)
+
+                                val mapElement = commentBlocks[recentHeaderName]
+                                if (mapElement == null) {
+                                    if (recentHeaderName != null) {
+                                        val initList = ArrayList<ParsedBlockData>()
+                                        val parsedClass = ParsedClass(recentHeaderName, headerType, namespace, initList)
+                                        parsedClass.docs = parsedBlock.docs
+                                        commentBlocks[recentHeaderName] = parsedClass
+                                    }
+                                } else {
+                                    mapElement.insideBlocks.add(parsedBlock)
+                                }
+                                block = ArrayList()
+                                startedDocComment = false
+                            }
                         }
                     }
                 }
             }
-
+            continue
         }
+        blocksBuffer = commentBlocks
         return commentBlocks
     }
 
-    fun calculateBrackets(line:String){
-        var openBracketPos = line.indexOf("{");
-        var closeBracketPos = line.lastIndexOf("}");
+    fun blocksByNamespace(): HashMap<String, ArrayList<ParsedClass>> {
+
+        val sortedMap = HashMap<String, ArrayList<ParsedClass>>()
+        var lastNamespace: String? = null
+        for ((key, value) in blocksBuffer) {
+            if (value.namespace != null) {
+                if (sortedMap[value.namespace] == null) {
+                    sortedMap[value.namespace] = ArrayList<ParsedClass>()
+                }
+                sortedMap[value.namespace]?.add(value)
+            }
+        }
+        return sortedMap
+    }
+
+    fun calculateBrackets(line: String) {
+        var openBracketPos = line.indexOf("{")
+        var closeBracketPos = line.lastIndexOf("}")
         // Подсчет всех скобок
         while (openBracketPos >= 0 && closeBracketPos >= 0) {
-            openBracketPos = line.indexOf("{", openBracketPos + 1);
-            closeBracketPos = line.indexOf("}", closeBracketPos + 1);
+            openBracketPos = line.indexOf("{", openBracketPos + 1)
+            closeBracketPos = line.indexOf("}", closeBracketPos + 1)
             when {
                 closeBracketPos != -1 -> {
                     changeBracketCount('-')
                 }
                 openBracketPos != -1 -> {
-                    changeBracketCount('+');
+                    changeBracketCount('+')
                 }
             }
         }
@@ -117,11 +131,11 @@ public class BlocksParser {
      */
     private fun changeBracketCount(operation: Char) {
         when (operation) {
-            '+' -> bracketsCount++;
-            '-' -> bracketsCount--;
+            '+' -> bracketsCount++
+            '-' -> bracketsCount--
         }
         if (bracketsCount == 0) {
-            bracketsClosed = true;
+            bracketsClosed = true
         }
     }
 
@@ -129,12 +143,12 @@ public class BlocksParser {
         val nameExp = Regex("""${headerType}\s*.*[:{$]?""")
         val name = nameExp.find(header)?.value ?: ""
         val splittedName = name.split("[\\s:{]".toRegex()).filter { str -> str.isNotEmpty() }
-        val resultName: String;
+        val resultName: String
         resultName = when (splittedName.size) {
             0 -> ""
             else -> splittedName[1]
         }
-        return resultName;
+        return resultName
     }
 
 }
