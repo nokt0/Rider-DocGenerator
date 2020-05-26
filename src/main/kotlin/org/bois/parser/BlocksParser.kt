@@ -81,6 +81,9 @@ class BlocksParser {
                                 block = ArrayList()
                                 startedDocComment = false
                             }
+                            println(Trimmer.trimLine(block))
+                            block = ArrayList()
+                            startedDocComment = false
                         }
                     }
                 }
