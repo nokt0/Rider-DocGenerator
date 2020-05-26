@@ -16,10 +16,10 @@
 
     <actions>
 
-        <action id="org.bois.action.GenerateDocAction"
+        <action id="org.bois.actions.GenerateDocAction"
                 icon="/META-INF/pluginIcon2.svg"
                 description="Create docs"
-                class="org.bois.action.GenerateDocAction">
+                class="org.bois.actions.GenerateDocAction">
             <override-text place="MainMenu" text="Generate Docs"/>
             <keyboard-shortcut first-keystroke="control alt /" second-keystroke="C" keymap="$default"/>
             <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
