@@ -9,11 +9,11 @@ class Tag {
     var name: String? = null
 
     override fun toString(): String {
-        return "content: [$content]\n" +
-                "cref: [$cref]\n" +
-                "file: [$file]\n" +
-                "path: [$path]\n" +
-                "type: [$type]\n" +
-                "name: [$name]\n"
+        return "content: [$content] " +
+                "cref: [$cref] " +
+                "file: [$file] " +
+                "path: [$path] " +
+                "type: [$type] " +
+                "name: [$name] "
     }
 }

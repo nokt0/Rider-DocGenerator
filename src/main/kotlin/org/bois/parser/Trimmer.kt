@@ -53,6 +53,7 @@ class Trimmer {
             return tagsStruct
         }
 
+
         fun splitForParameters(line: String): Tag {
             var result = Tag()
             if (line.indexOf(">") < line.lastIndexOf("<"))
@@ -60,33 +61,22 @@ class Trimmer {
 
             when {
                 Regex(""".*cref=.*\n""").matches(line) -> {
-                    result.cref =
-                        line.substring(line.indexOf("cref=")+0)
-                            .substring(line.indexOf("\"") + 1)
-                            .substring(0, line.indexOf("\"") - 1)
+                    result.cref = line.substring(line.indexOf("cref=") + 6, line.indexOf(">") - 1)
                 }
 
-                Regex(""".*.name=*\n""").matches(line) -> {
-                    result.name =
-                        line.substring(line.indexOf("name=") + 5)
-                            .substring(line.indexOf("\"") + 1)
-                            .substring(0, line.indexOf("\"") - 1)
+                Regex(""".*name=.*\n""").matches(line) -> {
+                    result.name = line.substring(line.indexOf("name=") + 6, line.indexOf(">") - 1)
                 }
 
                 Regex(""".*file=.*\n""").matches(line) -> {
-                    result.file = line.substring(line.indexOf("file=") + 5)
-                        .substring(line.indexOf("\'") + 1)
-                        .substring(0, line.indexOf("\'") - 1)
+                    result.file = line.substring(line.indexOf("file=") + 6, line.indexOf(">") - 1)
                 }
 
                 Regex(""".*path=.*\n""").matches(line) -> {
-                    result.path = line.substring(line.indexOf("path=") + 5)
-                        .substring(line.indexOf("\'") + 1)
-                        .substring(0, line.indexOf("\'") - 1)
+                    result.path = line.substring(line.indexOf("path=") + 6, line.indexOf(">") - 1)
+
                 }
-
             }
-
             return result
         }
     }
