@@ -6,16 +6,17 @@ import com.intellij.uiDesigner.core.AbstractLayout
 import com.intellij.util.ui.GridBag
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.UIUtil
+import org.jetbrains.annotations.SystemIndependent
 import java.awt.Dimension
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.Insets
+import java.io.File
 import javax.swing.JComponent
 import javax.swing.JFileChooser
-import javax.swing.JLabel
 import javax.swing.JPanel
 
-class PathDialogWrapper : DialogWrapper(true) {
+class PathDialogWrapper(val currentPath: String?) : DialogWrapper(true) {
 
     val panel = JPanel(GridBagLayout())
     val sourceCodePath = FilePicker("CS Source Code Path", "Browse", JFileChooser.DIRECTORIES_ONLY)
@@ -27,8 +28,14 @@ class PathDialogWrapper : DialogWrapper(true) {
     }
 
     override fun createCenterPanel(): JComponent? {
+
+
         sourceCodePath.setMode(sourceCodePath.MODE_OPEN)
         outDocumentationPath.setMode(sourceCodePath.MODE_OPEN)
+        if(currentPath != null){
+            sourceCodePath.fileChooser.currentDirectory = File(currentPath)
+            outDocumentationPath.fileChooser.currentDirectory = File(currentPath)
+        }
 
         val gb = GridBag()
             .setDefaultInsets(Insets(0, 0, AbstractLayout.DEFAULT_VGAP, AbstractLayout.DEFAULT_HGAP))
