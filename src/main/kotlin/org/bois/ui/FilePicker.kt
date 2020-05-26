@@ -9,7 +9,7 @@ class FilePicker(private val textFieldLabel: String, private val buttonLabel: St
     private val label: JLabel
     private val textField: JTextField
     private val button: JButton
-    private val fileChooser: JFileChooser = JFileChooser()
+    val fileChooser: JFileChooser = JFileChooser()
     private var mode = 0
 
     private fun buttonActionPerformed(evt: ActionEvent) {
