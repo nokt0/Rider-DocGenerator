@@ -7,7 +7,9 @@ class Trimmer {
         fun trimLine(doc: ArrayList<String>): TagsStruct {
             var tagsStruct: TagsStruct = TagsStruct()
 
+
             doc.forEach {
+                println(it)
                 var templateList: ArrayList<String> = ArrayList()
                 when {
                     Regex(""".*<c>.*\n""").matches(it) -> {
@@ -92,9 +94,8 @@ class Trimmer {
                             it.zipWithNext()
                     }
                 }
+                println(it)
             }
-
-            println(doc)
 
             doc.forEach {
                 when {
@@ -147,22 +148,28 @@ class Trimmer {
             if (line.indexOf(">") < line.lastIndexOf("<"))
                 result.content = line.substring(line.indexOf(">") + 1, line.lastIndexOf("<") - 1).trim()
 
+            var tmp: String
+
             when {
                 Regex(""".*cref=.*\n""").matches(line) -> {
-                    result.cref = line.substring(line.indexOf("cref=") + 6, line.indexOf(">") - 1)
+                    tmp = line.substring(line.indexOf("cref=") + 6)
+                    result.cref = tmp.substring(0, tmp.indexOf("\""))
                 }
 
                 Regex(""".*name=.*\n""").matches(line) -> {
-                    result.name = line.substring(line.indexOf("name=") + 6, line.indexOf(">") - 1)
+                    tmp = line.substring(line.indexOf("name=") + 6)
+                    result.name = tmp.substring(0, tmp.indexOf("\""))
+
                 }
 
                 Regex(""".*file=.*\n""").matches(line) -> {
-                    result.file = line.substring(line.indexOf("file=") + 6, line.indexOf(">") - 1)
+                    tmp = line.substring(line.indexOf("file=") + 6)
+                    result.file = tmp.substring(0, tmp.indexOf("\""))
                 }
 
                 Regex(""".*path=.*\n""").matches(line) -> {
-                    result.path = line.substring(line.indexOf("path=") + 6, line.indexOf(">") - 1)
-
+                    tmp = line.substring(line.indexOf("path=") + 6)
+                    result.path = tmp.substring(0, tmp.indexOf("\""))
                 }
             }
             return result
