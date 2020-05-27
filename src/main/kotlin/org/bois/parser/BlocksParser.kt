@@ -5,6 +5,7 @@ class BlocksParser {
     var bracketsCount = 0
     var bracketsClosed = true
     var blocksBuffer: HashMap<String, ParsedClass> = HashMap()
+
     fun createBlocks(input: List<String>): HashMap<String, ParsedClass> {
         var startedDocComment = false
         val commentBlocks = HashMap<String, ParsedClass>()
@@ -78,10 +79,10 @@ class BlocksParser {
                                 } else {
                                     mapElement.insideBlocks.add(parsedBlock)
                                 }
+                                println(Trimmer.trimLine(block))
                                 block = ArrayList()
                                 startedDocComment = false
                             }
-                            println(Trimmer.trimLine(block))
                             block = ArrayList()
                             startedDocComment = false
                         }

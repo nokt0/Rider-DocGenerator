@@ -73,13 +73,14 @@ class BlocksParserTest {
             Files.readAllLines(input.toPath(), Charset.defaultCharset())
         blocksParser.createBlocks(list)
         val result = blocksParser.blocksByNamespace()
-        val generator = NamespacePageCreator("namespace1")
-
-        result["test"]?.let { generator.create(it) }
-
-        val writter =
-            BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\namespace.html"))
-        writter.write(generator.htmlPage())
-        writter.close()
+        println(result)
+//        val generator = NamespacePageCreator("namespace1")
+//
+//        result["test"]?.let { generator.create(it) }
+//
+//        val writter =
+//            BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\namespace.html"))
+//        writter.write(generator.htmlPage())
+//        writter.close()
     }
 }
