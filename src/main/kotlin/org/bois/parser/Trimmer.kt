@@ -8,7 +8,95 @@ class Trimmer {
             var tagsStruct: TagsStruct = TagsStruct()
 
             doc.forEach {
-                println(it)
+                var templateList: ArrayList<String> = ArrayList()
+                when {
+                    Regex(""".*<c>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</c>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<code>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</code>.*\n""").matches(it))
+                            it.zipWithNext()
+
+                    }
+
+                    Regex(""".*<example>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</example>.*""").matches(it))
+                            it.zipWithNext()
+
+                    }
+
+                    Regex(""".*<exception.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</exception>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    //include is a single tag
+
+                    Regex(""".*<list.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</list>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<para>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</para>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<param.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</param>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    //paramref is a single tag
+
+                    Regex(""".*<permission.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</permission>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<remarks>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</remarks>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<returns>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</returns>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    // inheritdoc is a single tag
+
+                    // see is a single tag
+
+                    Regex(""".*<seealso.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</seealso>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<summary>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</summary>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    Regex(""".*<typeparam.*>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</typeparam>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+
+                    // typeparamref is a single tag
+
+                    Regex(""".*<value>.*\n""").matches(it) -> {
+                        while (!Regex(""".*</value>.*\n""").matches(it))
+                            it.zipWithNext()
+                    }
+                }
+            }
+
+            println(doc)
+
+            doc.forEach {
                 when {
                     Regex(""".*<c>.\n*""").matches(it) ->
                         tagsStruct.c = splitForParameters(it)
