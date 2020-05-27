@@ -1,6 +1,6 @@
 package htmlGenerator
 import org.bois.htmlGenerator.*
-import org.junit.jupiter.api.Test
+import org.junit.Test
 
 class htmlGeneratorTest {
     @Test

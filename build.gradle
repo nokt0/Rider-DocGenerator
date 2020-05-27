@@ -10,6 +10,11 @@ repositories {
     mavenCentral()
 }
 
+intellij{
+    type = "RD"
+    version = "2020.1-SNAPSHOT"
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
