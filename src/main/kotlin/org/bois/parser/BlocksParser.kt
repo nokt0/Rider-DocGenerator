@@ -78,12 +78,13 @@ class BlocksParser {
                                     parsedClass.docs = parsedBlock.docs
                                     commentBlocks[recentHeaderName] = parsedClass
                                 }
-                                block = ArrayList()
-                                startedDocComment = false
+                            } else {
+                                mapElement.insideBlocks.add(parsedBlock)
                             }
                             block = ArrayList()
                             startedDocComment = false
                         }
+                        println(Trimmer.trimLine(block))
                         block = ArrayList()
                         startedDocComment = false
                     }

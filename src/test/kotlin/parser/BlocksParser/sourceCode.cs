@@ -66,12 +66,8 @@ interface TestInterface
     int InterfaceMethod(int n);
 }
 
-/// <summary>
-/// Class level summary documentation goes here.
-/// </summary>
-/// <remarks>
-/// Longer comments can be associated with a type or member through the remarks tag.
-/// </remarks>
+/// <summary> Class level summary documentation goes here. </summary>
+/// <remarks> Longer comments can be associated with a type or member through the remarks tag. </remarks>
 public class TestClass1 : TestInterface, TestInterface1
 {
 
