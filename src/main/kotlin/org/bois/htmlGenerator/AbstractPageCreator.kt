@@ -6,16 +6,16 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.io.File
 
-abstract class AbstractPageCreator(templatePath:String) : IPageCreator {
+abstract class AbstractPageCreator() : IPageCreator {
 
-    override val page: Document
-    protected val body: Element
+    override var page: Document? = null
+    protected var body: Element? = null
     protected var counter = 1
     protected val deleteId = "template-stub"
+    protected var templatePath: File? = null
 
-    init {
-        val htmlTemplate = File(templatePath).readText(Charsets.UTF_8)
-        val doc = Jsoup.parse(htmlTemplate)
+    fun readTemplate(template: String) {
+        val doc = Jsoup.parse(template)
         page = doc
         body = doc.body()
     }
@@ -33,10 +33,11 @@ abstract class AbstractPageCreator(templatePath:String) : IPageCreator {
     }
 
     protected fun deleteTemplateThrash() {
-        val body = page.body()
-        val toDelete = body.select("#$deleteId")
-        for (item in toDelete) {
-            item.remove()
+        if (body != null) {
+            val toDelete = body!!.select("#$deleteId")
+            for (item in toDelete) {
+                item.remove()
+            }
         }
     }
 

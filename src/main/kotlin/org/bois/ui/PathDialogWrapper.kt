@@ -6,12 +6,13 @@ import com.intellij.uiDesigner.core.AbstractLayout
 import com.intellij.util.ui.GridBag
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.UIUtil
-import org.jetbrains.annotations.SystemIndependent
+import org.bois.DocGenerator
 import java.awt.Dimension
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
 import java.awt.Insets
 import java.io.File
+import java.nio.file.Paths
 import javax.swing.JComponent
 import javax.swing.JFileChooser
 import javax.swing.JPanel
@@ -32,7 +33,7 @@ class PathDialogWrapper(val currentPath: String?) : DialogWrapper(true) {
 
         sourceCodePath.setMode(sourceCodePath.MODE_OPEN)
         outDocumentationPath.setMode(sourceCodePath.MODE_OPEN)
-        if(currentPath != null){
+        if (currentPath != null) {
             sourceCodePath.fileChooser.currentDirectory = File(currentPath)
             outDocumentationPath.fileChooser.currentDirectory = File(currentPath)
         }
@@ -62,8 +63,14 @@ class PathDialogWrapper(val currentPath: String?) : DialogWrapper(true) {
     }
 
     override fun doOKAction() {
-        sourceCodePath.selectedFilePath
-        outDocumentationPath.selectedFilePath
+        val inputStream = javaClass.classLoader.getResource("html_templates/index.html")
+        val file = inputStream.file
+        val f = Thread.currentThread().contextClassLoader.getResource("testResource.txt");
+
+        val resourceDirectory = Paths.get("src", "main", "resources","testResource.txt").toFile()
+        val docGenerator = DocGenerator()
+        docGenerator.create(sourceCodePath.selectedFilePath, outDocumentationPath.selectedFilePath)
+
     }
 
 }
