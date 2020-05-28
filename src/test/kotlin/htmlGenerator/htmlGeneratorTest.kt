@@ -5,7 +5,6 @@ import org.junit.Test
 class htmlGeneratorTest {
     @Test
     fun testIndexPageGenerating(){
-        var generator = IndexPageCreator()
 
     }
 }

@@ -1,14 +1,17 @@
 package parser.BlocksParser
 
 import org.bois.parser.BlocksParser
+import org.junit.Test
 import com.google.gson.*
+import org.bois.fileWorker.FileWorker
+import org.bois.htmlGenerator.HtmlDocGenerator
 import org.bois.htmlGenerator.IndexPageCreator
 import org.bois.htmlGenerator.NamespacePageCreator
+import org.bois.parser.Parser
 import org.bois.parser.TreeParser
 import java.io.*
 import java.nio.charset.Charset
 import java.nio.file.Files
-import org.junit.jupiter.api.Test
 
 class BlocksParserTest {
     var blocksParser: BlocksParser = BlocksParser()
@@ -79,13 +82,9 @@ class BlocksParserTest {
         for((key,value) in result ){
             value.forEach { it -> it.createParentsAndChildren(tree) }
         }
-        val generator = NamespacePageCreator("namespace1")
-
-        result["test"]?.let { generator.create(it) }
-
-        val writter =
-            BufferedWriter(FileWriter("C:\\Users\\berns\\OneDrive\\Рабочий стол\\bootstrap-doc-generator\\namespace.html"))
-        writter.write(generator.htmlPage())
-        writter.close()
+        val generator = HtmlDocGenerator()
+        generator.createDocumentation(result)
+        val fileWorker = FileWorker(Parser())
+        //fileWorker.moveToFolder(File("C:\\Users\\berns\\OneDrive\\Рабочий стол\\testDocGenerator"),generator.namespaces,generator.classes,generator.indexPage)
     }
 }
