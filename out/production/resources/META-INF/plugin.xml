@@ -1,12 +1,10 @@
 <idea-plugin>
     <id>org.example.Rider-DocGenerator</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Rider-DocGenerator</name>
+    <version>1.0</version>
+    <vendor url="https://github.com/bernschrodr/Rider-DocGenerator">Bois</vendor>
 
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-    ]]></description>
+    <description>C# Rider Documentation Generator. Automatic create docs folder with documentation</description>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -17,6 +15,16 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
+
+        <action id="org.bois.actions.GenerateDocAction"
+                icon="/META-INF/pluginIcon2.svg"
+                description="Create docs"
+                class="org.bois.actions.GenerateDocAction">
+            <override-text place="MainMenu" text="Generate Docs"/>
+            <keyboard-shortcut first-keystroke="control alt /" second-keystroke="C" keymap="$default"/>
+            <mouse-shortcut keystroke="control button3 doubleClick" keymap="$default"/>
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>

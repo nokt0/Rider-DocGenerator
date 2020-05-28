@@ -1,7 +1,6 @@
 package parser.BlocksParser
 
 import org.bois.parser.BlocksParser
-import org.junit.Test
 import com.google.gson.*
 import org.bois.htmlGenerator.IndexPageCreator
 import org.bois.htmlGenerator.NamespacePageCreator
@@ -9,6 +8,7 @@ import org.bois.parser.TreeParser
 import java.io.*
 import java.nio.charset.Charset
 import java.nio.file.Files
+import org.junit.jupiter.api.Test
 
 class BlocksParserTest {
     var blocksParser: BlocksParser = BlocksParser()
