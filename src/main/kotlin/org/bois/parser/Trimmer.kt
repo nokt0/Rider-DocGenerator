@@ -12,7 +12,6 @@ class Trimmer {
             var tStruct: HashMap<String, Tag> = HashMap()
 //            var tmp = concatStrings(doc)
             doc.forEach {
-                println(it)
                 when {
                     Regex(""".*<c>.\n*""").matches(it) ->
                         tStruct["c"] = splitForParameters(it)
