@@ -8,13 +8,12 @@ class NamespacePageCreator(val namespaceName: String) :
     private val types = HashSet<HeaderType>()
 
 
-    fun createContainTypes(parsedClasses: ArrayList<ParsedClass>) {
+    private fun createContainTypes(parsedClasses: ArrayList<ParsedClass>) {
         for (item in parsedClasses) {
             if (item.type != null) {
                 types.add(item.type)
             }
         }
-
     }
 
     fun create(parsedClasses: ArrayList<ParsedClass>) {
@@ -25,7 +24,7 @@ class NamespacePageCreator(val namespaceName: String) :
         deleteTemplateThrash()
     }
 
-    fun addTypeContainers(parsedClasses: ArrayList<ParsedClass>): String {
+    private fun addTypeContainers(parsedClasses: ArrayList<ParsedClass>): String {
         var containers = ""
         for (type in types) {
             val header = when (type) {

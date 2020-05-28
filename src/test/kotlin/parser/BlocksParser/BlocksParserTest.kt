@@ -5,6 +5,7 @@ import org.junit.Test
 import com.google.gson.*
 import org.bois.htmlGenerator.IndexPageCreator
 import org.bois.htmlGenerator.NamespacePageCreator
+import org.bois.parser.TreeParser
 import java.io.*
 import java.nio.charset.Charset
 import java.nio.file.Files
@@ -61,9 +62,9 @@ class BlocksParserTest {
     @Test
     fun testBlocksParsingFromFile() {
         val gson = Gson()
-        val testFilePath = "src/test/kotlin/parser/BlocksParser/sourceCode.cs"
+        val testFilePath = "kotlin\\parser\\BlocksParser\\sourceCode.cs"
         val expected = gson.fromJson<BlocksParserTestData>(
-            FileReader("src/test/kotlin/parser/BlocksParser/Expected.json"),
+            FileReader("kotlin\\parser\\BlocksParser\\Expected.json"),
             BlocksParserTestData::class.java
         )
         val reader = BufferedReader(FileReader(testFilePath))
@@ -73,6 +74,11 @@ class BlocksParserTest {
             Files.readAllLines(input.toPath(), Charset.defaultCharset())
         blocksParser.createBlocks(list)
         val result = blocksParser.blocksByNamespace()
+        val treeParser = TreeParser()
+        val tree =  treeParser.createTree(list)
+        for((key,value) in result ){
+            value.forEach { it -> it.createParentsAndChildren(tree) }
+        }
         val generator = NamespacePageCreator("namespace1")
 
         result["test"]?.let { generator.create(it) }
