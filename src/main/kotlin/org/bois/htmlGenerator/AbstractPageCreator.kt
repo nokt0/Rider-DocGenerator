@@ -6,9 +6,9 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.io.File
 
-abstract class AbstractPageCreator(templatePath:String) {
+abstract class AbstractPageCreator(templatePath:String) : IPageCreator {
 
-    protected val page: Document
+    override val page: Document
     protected val body: Element
     protected var counter = 1
     protected val deleteId = "template-stub"
@@ -20,7 +20,7 @@ abstract class AbstractPageCreator(templatePath:String) {
         body = doc.body()
     }
 
-    fun htmlPage(): String {
+    override fun htmlPage(): String {
         return page.toString()
     }
 
