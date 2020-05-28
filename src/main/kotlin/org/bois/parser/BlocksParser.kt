@@ -78,7 +78,6 @@ class BlocksParser {
                                     parsedClass.docs = parsedBlock.docs
                                     commentBlocks[recentHeaderName] = parsedClass
                                 }
-                                println(Trimmer.trimLine(block))
                                 block = ArrayList()
                                 startedDocComment = false
                             }
