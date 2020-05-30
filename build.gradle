@@ -10,8 +10,16 @@ repositories {
     mavenCentral()
 }
 
+intellij{
+    type = "RD"
+    version = "2020.1-SNAPSHOT"
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
+    implementation('com.google.code.gson:gson:2.8.6')
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -28,4 +36,7 @@ patchPluginXml {
     changeNotes """
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
+}
+test {
+    useJUnitPlatform()
 }
