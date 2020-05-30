@@ -1,0 +1,14 @@
+{
+  "list": [
+    "interface TestInterface\n/// <summary>\n/// Documentation that describes the interface goes here.\n/// </summary>\n/// <remarks>\n/// Details about the interface go here.\n/// </remarks>\n",
+    "int InterfaceMethod(int n);\n/// <summary>\n/// Documentation that describes the method goes here.\n/// </summary>\n/// <param name=\"n\">\n/// Parameter n requires an integer argument.\n/// </param>\n/// <returns>\n/// The method returns an integer.\n/// </returns>\n",
+    "public class TestClass : TestInterface, TestInterface1\n/// <summary>\n/// Class level summary documentation goes here.\n/// </summary>\n/// <remarks>\n/// Longer comments can be associated with a type or member through\n/// the remarks tag.\n/// </remarks>\n",
+    "private string _name = null;\n/// <summary>\n/// Store for the Name property.\n/// </summary>\n",
+    "public TestClass()\n/// <summary>\n/// The class constructor.\n/// </summary>\n",
+    "public string Name\n/// <summary>\n/// Name property.\n/// </summary>\n/// <value>\n/// A value tag is used to describe the property value.\n/// </value>\n",
+    "public void SomeMethod(string s)\n/// <summary>\n/// Description for SomeMethod.\n/// </summary>\n/// <param name=\"s\"> Parameter description for s goes here.</param>\n/// <seealso cref=\"System.String\">\n/// You can use the cref attribute on any tag to reference a type or member\n/// and the compiler will check that the reference exists.\n/// </seealso>\n",
+    "public int SomeOtherMethod()\n/// <summary>\n/// Some other method.\n/// </summary>\n/// <returns>\n/// Return values are described through the returns tag.\n/// </returns>\n/// <seealso cref=\"SomeMethod(string)\">\n/// Notice the use of the cref attribute to reference a specific method.\n/// </seealso>\n",
+    "static int Main(System.String[] args)\n/// <summary>\n/// The entry point for the application.\n/// </summary>\n/// <param name=\"args\"> A list of command line arguments.</param>\n",
+    "public class TestClass1 : TestInterface, TestInterface1\n/// <summary>\n/// Class level summary documentation goes here.\n/// </summary>\n/// <remarks>\n/// Longer comments can be associated with a type or member through\n/// the remarks tag.\n/// </remarks>\n"
+  ]
+}
