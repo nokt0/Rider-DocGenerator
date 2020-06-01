@@ -10,9 +10,9 @@ class Trimmer {
             doc.forEach {
                 println(it)
                 when {
-                    Regex(""".*<c>.\n*""").matches(it) ->
+                    Regex(""".*<c>.*\n""").matches(it) ->
                         tagsStruct.c = splitForParameters(it)
-                    Regex(""".*<code>.\n*""").matches(it) ->
+                    Regex(""".*<code>.*\n""").matches(it) ->
                         tagsStruct.code = splitForParameters(it)
                     Regex(""".*<example>.*\n""").matches(it) ->
                         tagsStruct.example = splitForParameters(it)

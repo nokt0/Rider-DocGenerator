@@ -10,6 +10,7 @@ class ParsedClass(
     var docs: ArrayList<String> = ArrayList()
     var parents: ArrayList<String> = ArrayList()
     var children: ArrayList<String> = ArrayList()
+    var tags: TagsStruct? = null
 
     fun createParentsAndChildren(tree: InheritTree) {
         if (tree.children[name] != null) {

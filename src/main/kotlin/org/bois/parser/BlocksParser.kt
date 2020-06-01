@@ -63,6 +63,8 @@ class BlocksParser {
                             }
                         }
 
+                        var parsedClass: ParsedClass? =null
+
                         if (startedDocComment) {
                             if (headerString == null) {
                                 headerString = line.trim()
@@ -74,7 +76,7 @@ class BlocksParser {
                             if (mapElement == null) {
                                 if (recentHeaderName != null) {
                                     val initList = ArrayList<ParsedBlockData>()
-                                    val parsedClass = ParsedClass(recentHeaderName, headerType, namespace, initList)
+                                    parsedClass = ParsedClass(recentHeaderName, headerType, namespace, initList)
                                     parsedClass.docs = parsedBlock.docs
                                     commentBlocks[recentHeaderName] = parsedClass
                                 }
@@ -84,7 +86,7 @@ class BlocksParser {
                             block = ArrayList()
                             startedDocComment = false
                         }
-                        println(Trimmer.trimLine(block))
+                        parsedClass?.tags = Trimmer.trimLine(block)
                         block = ArrayList()
                         startedDocComment = false
                     }
